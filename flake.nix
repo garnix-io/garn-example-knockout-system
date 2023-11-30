@@ -42,11 +42,18 @@
           };
         in
         {
-          "all" = {
+          "colorThemeBattle" = {
             "type" = "app";
             "program" = "${let
-        dev = pkgs.mkShell {};
-        shell = "${pkgs.process-compose}/bin/process-compose up -f ${pkgs.writeText "process-compose.yml" (builtins.toJSON { "version" = "0.5"; "processes" = { "Abyss" = { "command" = "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.deno)];
+        });
+        shell = "deno run --allow-read --allow-run ${./knock-out.ts} ${pkgs.writeTextFile {
+        name = "executables-json";
+        text = builtins.toJSON { "Abyss" = "${let
         dev = pkgs.mkShell {};
         shell = "
     set -euo pipefail
@@ -80,10 +87,14 @@ ${"
 "}/. \$TEMP_DIR
     chmod -R u+rwX \$TEMP_DIR
 
-    echo \$TEMP_DIR
-
     export HOME=\$TEMP_DIR
     export XDG_CONFIG_HOME=\$TEMP_DIR/.config
+
+    killVsCodium() {
+      kill \$(cat \$XDG_CONFIG_HOME/VSCodium/code.lock) || true;
+      rm -rf \$TEMP_DIR
+    }
+    trap \"killVsCodium &> /dev/null\" EXIT
 
     ${(pkgs.vscode-with-extensions.override
     {
@@ -105,8 +116,6 @@ ${"
 
 console.log(fac(6));"}";
   }}"} --wait
-
-    rm -rf \$TEMP_DIR
   ";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
@@ -117,7 +126,7 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"; "environment" = []; }; "Default Dark+" = { "command" = "${let
+      ''}"; "Default Dark+" = "${let
         dev = pkgs.mkShell {};
         shell = "
     set -euo pipefail
@@ -151,10 +160,14 @@ ${"
 "}/. \$TEMP_DIR
     chmod -R u+rwX \$TEMP_DIR
 
-    echo \$TEMP_DIR
-
     export HOME=\$TEMP_DIR
     export XDG_CONFIG_HOME=\$TEMP_DIR/.config
+
+    killVsCodium() {
+      kill \$(cat \$XDG_CONFIG_HOME/VSCodium/code.lock) || true;
+      rm -rf \$TEMP_DIR
+    }
+    trap \"killVsCodium &> /dev/null\" EXIT
 
     ${(pkgs.vscode-with-extensions.override
     {
@@ -176,8 +189,6 @@ ${"
 
 console.log(fac(6));"}";
   }}"} --wait
-
-    rm -rf \$TEMP_DIR
   ";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
@@ -188,7 +199,7 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"; "environment" = []; }; "Default High Contrast" = { "command" = "${let
+      ''}"; "Default High Contrast" = "${let
         dev = pkgs.mkShell {};
         shell = "
     set -euo pipefail
@@ -222,10 +233,14 @@ ${"
 "}/. \$TEMP_DIR
     chmod -R u+rwX \$TEMP_DIR
 
-    echo \$TEMP_DIR
-
     export HOME=\$TEMP_DIR
     export XDG_CONFIG_HOME=\$TEMP_DIR/.config
+
+    killVsCodium() {
+      kill \$(cat \$XDG_CONFIG_HOME/VSCodium/code.lock) || true;
+      rm -rf \$TEMP_DIR
+    }
+    trap \"killVsCodium &> /dev/null\" EXIT
 
     ${(pkgs.vscode-with-extensions.override
     {
@@ -247,8 +262,6 @@ ${"
 
 console.log(fac(6));"}";
   }}"} --wait
-
-    rm -rf \$TEMP_DIR
   ";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
@@ -259,7 +272,7 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"; "environment" = []; }; "Default High Contrast Light" = { "command" = "${let
+      ''}"; "Default High Contrast Light" = "${let
         dev = pkgs.mkShell {};
         shell = "
     set -euo pipefail
@@ -293,10 +306,14 @@ ${"
 "}/. \$TEMP_DIR
     chmod -R u+rwX \$TEMP_DIR
 
-    echo \$TEMP_DIR
-
     export HOME=\$TEMP_DIR
     export XDG_CONFIG_HOME=\$TEMP_DIR/.config
+
+    killVsCodium() {
+      kill \$(cat \$XDG_CONFIG_HOME/VSCodium/code.lock) || true;
+      rm -rf \$TEMP_DIR
+    }
+    trap \"killVsCodium &> /dev/null\" EXIT
 
     ${(pkgs.vscode-with-extensions.override
     {
@@ -318,8 +335,6 @@ ${"
 
 console.log(fac(6));"}";
   }}"} --wait
-
-    rm -rf \$TEMP_DIR
   ";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
@@ -330,7 +345,7 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"; "environment" = []; }; "Default Light+" = { "command" = "${let
+      ''}"; "Default Light+" = "${let
         dev = pkgs.mkShell {};
         shell = "
     set -euo pipefail
@@ -364,10 +379,14 @@ ${"
 "}/. \$TEMP_DIR
     chmod -R u+rwX \$TEMP_DIR
 
-    echo \$TEMP_DIR
-
     export HOME=\$TEMP_DIR
     export XDG_CONFIG_HOME=\$TEMP_DIR/.config
+
+    killVsCodium() {
+      kill \$(cat \$XDG_CONFIG_HOME/VSCodium/code.lock) || true;
+      rm -rf \$TEMP_DIR
+    }
+    trap \"killVsCodium &> /dev/null\" EXIT
 
     ${(pkgs.vscode-with-extensions.override
     {
@@ -389,8 +408,6 @@ ${"
 
 console.log(fac(6));"}";
   }}"} --wait
-
-    rm -rf \$TEMP_DIR
   ";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
@@ -401,7 +418,7 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"; "environment" = []; }; "Default Light Modern" = { "command" = "${let
+      ''}"; "Default Light Modern" = "${let
         dev = pkgs.mkShell {};
         shell = "
     set -euo pipefail
@@ -435,10 +452,14 @@ ${"
 "}/. \$TEMP_DIR
     chmod -R u+rwX \$TEMP_DIR
 
-    echo \$TEMP_DIR
-
     export HOME=\$TEMP_DIR
     export XDG_CONFIG_HOME=\$TEMP_DIR/.config
+
+    killVsCodium() {
+      kill \$(cat \$XDG_CONFIG_HOME/VSCodium/code.lock) || true;
+      rm -rf \$TEMP_DIR
+    }
+    trap \"killVsCodium &> /dev/null\" EXIT
 
     ${(pkgs.vscode-with-extensions.override
     {
@@ -460,8 +481,6 @@ ${"
 
 console.log(fac(6));"}";
   }}"} --wait
-
-    rm -rf \$TEMP_DIR
   ";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
@@ -472,7 +491,7 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"; "environment" = []; }; "Kimbie Dark" = { "command" = "${let
+      ''}"; "Kimbie Dark" = "${let
         dev = pkgs.mkShell {};
         shell = "
     set -euo pipefail
@@ -506,10 +525,14 @@ ${"
 "}/. \$TEMP_DIR
     chmod -R u+rwX \$TEMP_DIR
 
-    echo \$TEMP_DIR
-
     export HOME=\$TEMP_DIR
     export XDG_CONFIG_HOME=\$TEMP_DIR/.config
+
+    killVsCodium() {
+      kill \$(cat \$XDG_CONFIG_HOME/VSCodium/code.lock) || true;
+      rm -rf \$TEMP_DIR
+    }
+    trap \"killVsCodium &> /dev/null\" EXIT
 
     ${(pkgs.vscode-with-extensions.override
     {
@@ -531,8 +554,6 @@ ${"
 
 console.log(fac(6));"}";
   }}"} --wait
-
-    rm -rf \$TEMP_DIR
   ";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
@@ -543,7 +564,7 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"; "environment" = []; }; "Monokai" = { "command" = "${let
+      ''}"; "Monokai" = "${let
         dev = pkgs.mkShell {};
         shell = "
     set -euo pipefail
@@ -577,10 +598,14 @@ ${"
 "}/. \$TEMP_DIR
     chmod -R u+rwX \$TEMP_DIR
 
-    echo \$TEMP_DIR
-
     export HOME=\$TEMP_DIR
     export XDG_CONFIG_HOME=\$TEMP_DIR/.config
+
+    killVsCodium() {
+      kill \$(cat \$XDG_CONFIG_HOME/VSCodium/code.lock) || true;
+      rm -rf \$TEMP_DIR
+    }
+    trap \"killVsCodium &> /dev/null\" EXIT
 
     ${(pkgs.vscode-with-extensions.override
     {
@@ -602,8 +627,6 @@ ${"
 
 console.log(fac(6));"}";
   }}"} --wait
-
-    rm -rf \$TEMP_DIR
   ";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
@@ -614,7 +637,7 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"; "environment" = []; }; "Monokai Dimmed" = { "command" = "${let
+      ''}"; "Monokai Dimmed" = "${let
         dev = pkgs.mkShell {};
         shell = "
     set -euo pipefail
@@ -648,10 +671,14 @@ ${"
 "}/. \$TEMP_DIR
     chmod -R u+rwX \$TEMP_DIR
 
-    echo \$TEMP_DIR
-
     export HOME=\$TEMP_DIR
     export XDG_CONFIG_HOME=\$TEMP_DIR/.config
+
+    killVsCodium() {
+      kill \$(cat \$XDG_CONFIG_HOME/VSCodium/code.lock) || true;
+      rm -rf \$TEMP_DIR
+    }
+    trap \"killVsCodium &> /dev/null\" EXIT
 
     ${(pkgs.vscode-with-extensions.override
     {
@@ -673,8 +700,6 @@ ${"
 
 console.log(fac(6));"}";
   }}"} --wait
-
-    rm -rf \$TEMP_DIR
   ";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
@@ -685,7 +710,7 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"; "environment" = []; }; "Quiet Light" = { "command" = "${let
+      ''}"; "Quiet Light" = "${let
         dev = pkgs.mkShell {};
         shell = "
     set -euo pipefail
@@ -719,10 +744,14 @@ ${"
 "}/. \$TEMP_DIR
     chmod -R u+rwX \$TEMP_DIR
 
-    echo \$TEMP_DIR
-
     export HOME=\$TEMP_DIR
     export XDG_CONFIG_HOME=\$TEMP_DIR/.config
+
+    killVsCodium() {
+      kill \$(cat \$XDG_CONFIG_HOME/VSCodium/code.lock) || true;
+      rm -rf \$TEMP_DIR
+    }
+    trap \"killVsCodium &> /dev/null\" EXIT
 
     ${(pkgs.vscode-with-extensions.override
     {
@@ -744,8 +773,6 @@ ${"
 
 console.log(fac(6));"}";
   }}"} --wait
-
-    rm -rf \$TEMP_DIR
   ";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
@@ -756,7 +783,7 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"; "environment" = []; }; "Red" = { "command" = "${let
+      ''}"; "Red" = "${let
         dev = pkgs.mkShell {};
         shell = "
     set -euo pipefail
@@ -790,10 +817,14 @@ ${"
 "}/. \$TEMP_DIR
     chmod -R u+rwX \$TEMP_DIR
 
-    echo \$TEMP_DIR
-
     export HOME=\$TEMP_DIR
     export XDG_CONFIG_HOME=\$TEMP_DIR/.config
+
+    killVsCodium() {
+      kill \$(cat \$XDG_CONFIG_HOME/VSCodium/code.lock) || true;
+      rm -rf \$TEMP_DIR
+    }
+    trap \"killVsCodium &> /dev/null\" EXIT
 
     ${(pkgs.vscode-with-extensions.override
     {
@@ -815,8 +846,6 @@ ${"
 
 console.log(fac(6));"}";
   }}"} --wait
-
-    rm -rf \$TEMP_DIR
   ";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
@@ -827,7 +856,7 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"; "environment" = []; }; "Solarized Dark" = { "command" = "${let
+      ''}"; "Solarized Dark" = "${let
         dev = pkgs.mkShell {};
         shell = "
     set -euo pipefail
@@ -861,10 +890,14 @@ ${"
 "}/. \$TEMP_DIR
     chmod -R u+rwX \$TEMP_DIR
 
-    echo \$TEMP_DIR
-
     export HOME=\$TEMP_DIR
     export XDG_CONFIG_HOME=\$TEMP_DIR/.config
+
+    killVsCodium() {
+      kill \$(cat \$XDG_CONFIG_HOME/VSCodium/code.lock) || true;
+      rm -rf \$TEMP_DIR
+    }
+    trap \"killVsCodium &> /dev/null\" EXIT
 
     ${(pkgs.vscode-with-extensions.override
     {
@@ -886,8 +919,6 @@ ${"
 
 console.log(fac(6));"}";
   }}"} --wait
-
-    rm -rf \$TEMP_DIR
   ";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
@@ -898,7 +929,7 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"; "environment" = []; }; "Solarized Light" = { "command" = "${let
+      ''}"; "Solarized Light" = "${let
         dev = pkgs.mkShell {};
         shell = "
     set -euo pipefail
@@ -932,10 +963,14 @@ ${"
 "}/. \$TEMP_DIR
     chmod -R u+rwX \$TEMP_DIR
 
-    echo \$TEMP_DIR
-
     export HOME=\$TEMP_DIR
     export XDG_CONFIG_HOME=\$TEMP_DIR/.config
+
+    killVsCodium() {
+      kill \$(cat \$XDG_CONFIG_HOME/VSCodium/code.lock) || true;
+      rm -rf \$TEMP_DIR
+    }
+    trap \"killVsCodium &> /dev/null\" EXIT
 
     ${(pkgs.vscode-with-extensions.override
     {
@@ -957,8 +992,6 @@ ${"
 
 console.log(fac(6));"}";
   }}"} --wait
-
-    rm -rf \$TEMP_DIR
   ";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
@@ -969,7 +1002,7 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"; "environment" = []; }; "Tomorrow Night Blue" = { "command" = "${let
+      ''}"; "Tomorrow Night Blue" = "${let
         dev = pkgs.mkShell {};
         shell = "
     set -euo pipefail
@@ -1003,10 +1036,14 @@ ${"
 "}/. \$TEMP_DIR
     chmod -R u+rwX \$TEMP_DIR
 
-    echo \$TEMP_DIR
-
     export HOME=\$TEMP_DIR
     export XDG_CONFIG_HOME=\$TEMP_DIR/.config
+
+    killVsCodium() {
+      kill \$(cat \$XDG_CONFIG_HOME/VSCodium/code.lock) || true;
+      rm -rf \$TEMP_DIR
+    }
+    trap \"killVsCodium &> /dev/null\" EXIT
 
     ${(pkgs.vscode-with-extensions.override
     {
@@ -1028,8 +1065,6 @@ ${"
 
 console.log(fac(6));"}";
   }}"} --wait
-
-    rm -rf \$TEMP_DIR
   ";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
@@ -1040,7 +1075,7 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"; "environment" = []; }; "Visual Studio Dark" = { "command" = "${let
+      ''}"; "Visual Studio Dark" = "${let
         dev = pkgs.mkShell {};
         shell = "
     set -euo pipefail
@@ -1074,10 +1109,14 @@ ${"
 "}/. \$TEMP_DIR
     chmod -R u+rwX \$TEMP_DIR
 
-    echo \$TEMP_DIR
-
     export HOME=\$TEMP_DIR
     export XDG_CONFIG_HOME=\$TEMP_DIR/.config
+
+    killVsCodium() {
+      kill \$(cat \$XDG_CONFIG_HOME/VSCodium/code.lock) || true;
+      rm -rf \$TEMP_DIR
+    }
+    trap \"killVsCodium &> /dev/null\" EXIT
 
     ${(pkgs.vscode-with-extensions.override
     {
@@ -1099,8 +1138,6 @@ ${"
 
 console.log(fac(6));"}";
   }}"} --wait
-
-    rm -rf \$TEMP_DIR
   ";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
@@ -1111,7 +1148,7 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"; "environment" = []; }; "Visual Studio Light" = { "command" = "${let
+      ''}"; "Visual Studio Light" = "${let
         dev = pkgs.mkShell {};
         shell = "
     set -euo pipefail
@@ -1145,10 +1182,14 @@ ${"
 "}/. \$TEMP_DIR
     chmod -R u+rwX \$TEMP_DIR
 
-    echo \$TEMP_DIR
-
     export HOME=\$TEMP_DIR
     export XDG_CONFIG_HOME=\$TEMP_DIR/.config
+
+    killVsCodium() {
+      kill \$(cat \$XDG_CONFIG_HOME/VSCodium/code.lock) || true;
+      rm -rf \$TEMP_DIR
+    }
+    trap \"killVsCodium &> /dev/null\" EXIT
 
     ${(pkgs.vscode-with-extensions.override
     {
@@ -1170,8 +1211,6 @@ ${"
 
 console.log(fac(6));"}";
   }}"} --wait
-
-    rm -rf \$TEMP_DIR
   ";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
@@ -1182,7 +1221,683 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"; "environment" = []; }; }; })}";
+      ''}"; };
+      }}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}";
+          };
+          "vimBattle" = {
+            "type" = "app";
+            "program" = "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.deno)];
+        });
+        shell = "deno run --allow-read --allow-run ${./knock-out.ts} ${pkgs.writeTextFile {
+        name = "executables-json";
+        text = builtins.toJSON { "blue" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    # export HOME=/nope
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"blue"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "darkblue" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    # export HOME=/nope
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"darkblue"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "default" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    # export HOME=/nope
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"default"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "delek" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    # export HOME=/nope
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"delek"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "desert" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    # export HOME=/nope
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"desert"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "elflord" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    # export HOME=/nope
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"elflord"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "evening" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    # export HOME=/nope
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"evening"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "habamax" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    # export HOME=/nope
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"habamax"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "industry" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    # export HOME=/nope
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"industry"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "koehler" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    # export HOME=/nope
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"koehler"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "lunaperche" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    # export HOME=/nope
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"lunaperche"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "morning" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    # export HOME=/nope
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"morning"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "murphy" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    # export HOME=/nope
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"murphy"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "pablo" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    # export HOME=/nope
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"pablo"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "peachpuff" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    # export HOME=/nope
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"peachpuff"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "quiet" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    # export HOME=/nope
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"quiet"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "ron" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    # export HOME=/nope
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"ron"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "shine" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    # export HOME=/nope
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"shine"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "slate" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    # export HOME=/nope
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"slate"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "torte" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    # export HOME=/nope
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"torte"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "zellner" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    # export HOME=/nope
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"zellner"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; };
+      }}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";

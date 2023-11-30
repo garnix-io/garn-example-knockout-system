@@ -1,9 +1,12 @@
 import * as garn from "https://garn.io/ts/v0.0.18/mod.ts";
+import * as pkgs from "https://garn.io/ts/v0.0.18/nixpkgs.ts";
+import * as nix from "https://garn.io/ts/v0.0.18/nix.ts";
 import { openVsCodium } from "./vscode.ts";
-import { writeTextFile } from "https://garn.io/ts/v0.0.18/internal/utils.ts";
-import { nixStrLit } from "https://garn.io/ts/v0.0.18/nix.ts";
+import {
+  mapValues,
+  writeTextFile,
+} from "https://garn.io/ts/v0.0.18/internal/utils.ts";
 import outdent from "https://deno.land/x/outdent@v0.8.0/mod.ts";
-import { processCompose } from "https://garn.io/ts/v0.0.18/process_compose.ts";
 
 const exampleFile: garn.Package = garn.mkPackage(
   writeTextFile(
@@ -44,9 +47,9 @@ const colorThemes = [
   "Visual Studio Light",
 ];
 
-const openVsCodiumWithColorTheme = (colorTheme: string) =>
+const openVsCodiumWithColorTheme = (colorTheme: string): garn.Executable =>
   openVsCodium({
-    file: nixStrLit`${exampleFile}`,
+    file: nix.nixStrLit`${exampleFile}`,
     settings: {
       "update.mode": "none",
       "window.menuBarVisibility": "hidden",
@@ -54,11 +57,78 @@ const openVsCodiumWithColorTheme = (colorTheme: string) =>
     },
   });
 
-export const all = processCompose(
+const knockOut = (
+  executables: Record<string, garn.Executable>,
+): garn.Executable => {
+  const value: nix.NixExpression = nix.nixAttrSet(
+    mapValues((e) => e.nixExpression, executables),
+  );
+  const executablesJson = garn.mkPackage(
+    nix.nixRaw`
+      pkgs.writeTextFile {
+        name = "executables-json";
+        text = builtins.toJSON ${value};
+      }
+    `,
+    "executables-json",
+  );
+  return garn.emptyEnvironment.withDevTools([pkgs.deno])
+    .shell`deno run --allow-read --allow-run ${nix.nixRaw`./knock-out.ts`} ${executablesJson}`;
+};
+
+export const colorThemeBattle = knockOut(
   Object.fromEntries(
     colorThemes.map((colorTheme) => [
       colorTheme,
       openVsCodiumWithColorTheme(colorTheme),
     ]),
+  ),
+);
+
+export const vim = (colorScheme: string): garn.Executable => {
+  const vimrc = garn.mkPackage(
+    nix.nixRaw`
+      pkgs.writeTextFile {
+        name = "vimrc";
+        text = ${nix.nixStrLit`colorscheme ${colorScheme}`};
+      }
+    `,
+    "vimrc",
+  );
+  return garn.shell`
+    # export HOME=/nope
+    exec ${nix.nixRaw`pkgs.xfce.xfce4-terminal`}/bin/xfce4-terminal --disable-server --command "${
+    pkgs.neovim
+  }/bin/nvim -u ${vimrc} ${exampleFile}" &> /dev/null
+  `;
+};
+
+const nvimColorschemes = [
+  "blue",
+  "darkblue",
+  "default",
+  "delek",
+  "desert",
+  "elflord",
+  "evening",
+  "habamax",
+  "industry",
+  "koehler",
+  "lunaperche",
+  "morning",
+  "murphy",
+  "pablo",
+  "peachpuff",
+  "quiet",
+  "ron",
+  "shine",
+  "slate",
+  "torte",
+  "zellner",
+];
+
+export const vimBattle: garn.Executable = knockOut(
+  Object.fromEntries(
+    nvimColorschemes.map((colorTheme) => [colorTheme, vim(colorTheme)]),
   ),
 );

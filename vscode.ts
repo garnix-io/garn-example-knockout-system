@@ -46,13 +46,15 @@ export const openVsCodium = (
     cp -r ${tempHomeDir(args.settings ?? {})}/. $TEMP_DIR
     chmod -R u+rwX $TEMP_DIR
 
-    echo $TEMP_DIR
-
     export HOME=$TEMP_DIR
     export XDG_CONFIG_HOME=$TEMP_DIR/.config
 
-    ${vscodium}/bin/codium --new-window --disable-workspace-trust ${file} --wait
+    killVsCodium() {
+      kill $(cat $XDG_CONFIG_HOME/VSCodium/code.lock) || true;
+      rm -rf $TEMP_DIR
+    }
+    trap "killVsCodium &> /dev/null" EXIT
 
-    rm -rf $TEMP_DIR
+    ${vscodium}/bin/codium --new-window --disable-workspace-trust ${file} --wait
   `.setDescription("open vscodium");
 };
