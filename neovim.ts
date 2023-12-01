@@ -7,7 +7,8 @@ import { mkExecutable } from "https://garn.io/ts/v0.0.18/executable.ts";
 const terminalEmulator = (command: nix.NixExpression): garn.Executable => {
   const onLinux = garn.emptyEnvironment.withDevTools([pkgs.lxterminal])
     .shell`lxterminal --command ${command}`;
-  const onMac = garn.emptyEnvironment.shell`alacritty --command ${command}`;
+  const onMac = garn.emptyEnvironment.withDevTools([pkgs.alacritty])
+    .shell`alacritty --command ${command}`;
   return (
     // # then ${nix.nixStrLit`\${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --hide-menubar --command "${command}"`}
     mkExecutable(
