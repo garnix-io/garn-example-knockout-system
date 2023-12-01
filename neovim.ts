@@ -14,7 +14,7 @@ export const neovimWithColorscheme = (colorscheme: string): garn.Executable => {
     "vimrc",
   );
   return garn.shell`
-    exec ${nix.nixRaw`pkgs.xfce.xfce4-terminal`}/bin/xfce4-terminal --disable-server --command "${
+    exec ${nix.nixRaw`pkgs.xfce.xfce4-terminal`}/bin/xfce4-terminal --hide-menubar --disable-server --command "${
     pkgs.neovim
   }/bin/nvim -u ${vimrc} ${exampleFile}" &> /dev/null
   `;
