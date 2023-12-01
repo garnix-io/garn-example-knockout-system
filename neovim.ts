@@ -68,9 +68,10 @@ export const neovimColorschemes = [
   "zellner",
 ];
 
-export const neovimCandidates = Object.fromEntries(
-  neovimColorschemes.map((colorscheme) => [
-    colorscheme,
-    neovimWithColorscheme(colorscheme),
-  ]),
-);
+export const neovimCandidates: Record<string, garn.Executable> =
+  Object.fromEntries(
+    neovimColorschemes.map((colorscheme) => [
+      colorscheme,
+      neovimWithColorscheme(colorscheme),
+    ]),
+  );
