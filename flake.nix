@@ -44,18 +44,27 @@
         {
           "neovim/single" = {
             "type" = "app";
-            "program" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-            then "${let
+            "program" =
+              if (pkgs.lib.any (x: x == system) [ "aarch64-linux" "x86_64-linux" ])
+              then "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"murphy"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme murphy' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -79,17 +88,25 @@ console.log(fac(6));"}";
         ${dev.shellHook}
         ${shell} "$@"
       ''}"
-            else "${let
+              else "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"murphy"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme murphy' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -112,24 +129,32 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}");
+      ''}";
           };
           "neovim/runAll" = {
             "type" = "app";
             "program" = "${let
         dev = pkgs.mkShell {};
-        shell = "${pkgs.process-compose}/bin/process-compose up -f ${pkgs.writeText "process-compose.yml" (builtins.toJSON { "version" = "0.5"; "processes" = { "blue" = { "command" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
+        shell = "${pkgs.process-compose}/bin/process-compose up -f ${pkgs.writeText "process-compose.yml" (builtins.toJSON { "version" = "0.5"; "processes" = { "blue" = { "command" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"blue"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme blue' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -153,17 +178,25 @@ console.log(fac(6));"}";
         ${dev.shellHook}
         ${shell} "$@"
       ''}"
-          else "${let
+      else "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"blue"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme blue' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -186,18 +219,26 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"); "environment" = []; }; "darkblue" = { "command" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
+      ''}"; "environment" = []; }; "darkblue" = { "command" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"darkblue"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme darkblue' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -221,17 +262,25 @@ console.log(fac(6));"}";
         ${dev.shellHook}
         ${shell} "$@"
       ''}"
-          else "${let
+      else "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"darkblue"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme darkblue' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -254,18 +303,26 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"); "environment" = []; }; "default" = { "command" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
+      ''}"; "environment" = []; }; "default" = { "command" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"default"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme default' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -289,17 +346,25 @@ console.log(fac(6));"}";
         ${dev.shellHook}
         ${shell} "$@"
       ''}"
-          else "${let
+      else "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"default"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme default' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -322,18 +387,26 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"); "environment" = []; }; "delek" = { "command" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
+      ''}"; "environment" = []; }; "delek" = { "command" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"delek"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme delek' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -357,17 +430,25 @@ console.log(fac(6));"}";
         ${dev.shellHook}
         ${shell} "$@"
       ''}"
-          else "${let
+      else "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"delek"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme delek' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -390,18 +471,26 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"); "environment" = []; }; "desert" = { "command" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
+      ''}"; "environment" = []; }; "desert" = { "command" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"desert"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme desert' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -425,17 +514,25 @@ console.log(fac(6));"}";
         ${dev.shellHook}
         ${shell} "$@"
       ''}"
-          else "${let
+      else "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"desert"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme desert' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -458,18 +555,26 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"); "environment" = []; }; "elflord" = { "command" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
+      ''}"; "environment" = []; }; "elflord" = { "command" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"elflord"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme elflord' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -493,17 +598,25 @@ console.log(fac(6));"}";
         ${dev.shellHook}
         ${shell} "$@"
       ''}"
-          else "${let
+      else "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"elflord"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme elflord' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -526,18 +639,26 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"); "environment" = []; }; "evening" = { "command" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
+      ''}"; "environment" = []; }; "evening" = { "command" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"evening"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme evening' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -561,17 +682,25 @@ console.log(fac(6));"}";
         ${dev.shellHook}
         ${shell} "$@"
       ''}"
-          else "${let
+      else "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"evening"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme evening' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -594,18 +723,26 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"); "environment" = []; }; "habamax" = { "command" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
+      ''}"; "environment" = []; }; "habamax" = { "command" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"habamax"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme habamax' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -629,17 +766,25 @@ console.log(fac(6));"}";
         ${dev.shellHook}
         ${shell} "$@"
       ''}"
-          else "${let
+      else "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"habamax"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme habamax' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -662,18 +807,26 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"); "environment" = []; }; "industry" = { "command" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
+      ''}"; "environment" = []; }; "industry" = { "command" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"industry"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme industry' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -697,17 +850,25 @@ console.log(fac(6));"}";
         ${dev.shellHook}
         ${shell} "$@"
       ''}"
-          else "${let
+      else "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"industry"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme industry' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -730,18 +891,26 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"); "environment" = []; }; "koehler" = { "command" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
+      ''}"; "environment" = []; }; "koehler" = { "command" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"koehler"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme koehler' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -765,17 +934,25 @@ console.log(fac(6));"}";
         ${dev.shellHook}
         ${shell} "$@"
       ''}"
-          else "${let
+      else "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"koehler"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme koehler' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -798,18 +975,26 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"); "environment" = []; }; "lunaperche" = { "command" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
+      ''}"; "environment" = []; }; "lunaperche" = { "command" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"lunaperche"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme lunaperche' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -833,17 +1018,25 @@ console.log(fac(6));"}";
         ${dev.shellHook}
         ${shell} "$@"
       ''}"
-          else "${let
+      else "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"lunaperche"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme lunaperche' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -866,18 +1059,26 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"); "environment" = []; }; "morning" = { "command" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
+      ''}"; "environment" = []; }; "morning" = { "command" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"morning"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme morning' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -901,17 +1102,25 @@ console.log(fac(6));"}";
         ${dev.shellHook}
         ${shell} "$@"
       ''}"
-          else "${let
+      else "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"morning"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme morning' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -934,18 +1143,26 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"); "environment" = []; }; "murphy" = { "command" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
+      ''}"; "environment" = []; }; "murphy" = { "command" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"murphy"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme murphy' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -969,17 +1186,25 @@ console.log(fac(6));"}";
         ${dev.shellHook}
         ${shell} "$@"
       ''}"
-          else "${let
+      else "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"murphy"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme murphy' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -1002,18 +1227,26 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"); "environment" = []; }; "pablo" = { "command" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
+      ''}"; "environment" = []; }; "pablo" = { "command" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"pablo"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme pablo' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -1037,17 +1270,25 @@ console.log(fac(6));"}";
         ${dev.shellHook}
         ${shell} "$@"
       ''}"
-          else "${let
+      else "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"pablo"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme pablo' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -1070,18 +1311,26 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"); "environment" = []; }; "peachpuff" = { "command" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
+      ''}"; "environment" = []; }; "peachpuff" = { "command" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"peachpuff"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme peachpuff' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -1105,17 +1354,25 @@ console.log(fac(6));"}";
         ${dev.shellHook}
         ${shell} "$@"
       ''}"
-          else "${let
+      else "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"peachpuff"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme peachpuff' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -1138,18 +1395,26 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"); "environment" = []; }; "quiet" = { "command" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
+      ''}"; "environment" = []; }; "quiet" = { "command" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"quiet"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme quiet' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -1173,17 +1438,25 @@ console.log(fac(6));"}";
         ${dev.shellHook}
         ${shell} "$@"
       ''}"
-          else "${let
+      else "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"quiet"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme quiet' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -1206,18 +1479,26 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"); "environment" = []; }; "ron" = { "command" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
+      ''}"; "environment" = []; }; "ron" = { "command" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"ron"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme ron' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -1241,17 +1522,25 @@ console.log(fac(6));"}";
         ${dev.shellHook}
         ${shell} "$@"
       ''}"
-          else "${let
+      else "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"ron"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme ron' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -1274,18 +1563,26 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"); "environment" = []; }; "shine" = { "command" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
+      ''}"; "environment" = []; }; "shine" = { "command" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"shine"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme shine' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -1309,17 +1606,25 @@ console.log(fac(6));"}";
         ${dev.shellHook}
         ${shell} "$@"
       ''}"
-          else "${let
+      else "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"shine"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme shine' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -1342,18 +1647,26 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"); "environment" = []; }; "slate" = { "command" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
+      ''}"; "environment" = []; }; "slate" = { "command" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"slate"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme slate' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -1377,17 +1690,25 @@ console.log(fac(6));"}";
         ${dev.shellHook}
         ${shell} "$@"
       ''}"
-          else "${let
+      else "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"slate"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme slate' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -1410,18 +1731,26 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"); "environment" = []; }; "torte" = { "command" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
+      ''}"; "environment" = []; }; "torte" = { "command" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"torte"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme torte' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -1445,17 +1774,25 @@ console.log(fac(6));"}";
         ${dev.shellHook}
         ${shell} "$@"
       ''}"
-          else "${let
+      else "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"torte"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme torte' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -1478,18 +1815,26 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"); "environment" = []; }; "zellner" = { "command" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
+      ''}"; "environment" = []; }; "zellner" = { "command" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"zellner"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme zellner' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -1513,17 +1858,25 @@ console.log(fac(6));"}";
         ${dev.shellHook}
         ${shell} "$@"
       ''}"
-          else "${let
+      else "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"zellner"}";
-      }} ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme zellner' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -1546,7 +1899,7 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"); "environment" = []; }; }; })}";
+      ''}"; "environment" = []; }; }; })}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1569,1458 +1922,15 @@ console.log(fac(6));"}";
         });
         shell = "deno run --allow-read --allow-run ${./knockout-runner.ts} ${pkgs.writeTextFile {
         name = "executables-json";
-        text = builtins.toJSON { "blue" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
+        text = builtins.toJSON { "blue" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"blue"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"
-          else "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.alacritty)];
-        });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"blue"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"); "darkblue" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.lxterminal)];
-        });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"darkblue"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"
-          else "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.alacritty)];
-        });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"darkblue"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"); "default" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.lxterminal)];
-        });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"default"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"
-          else "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.alacritty)];
-        });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"default"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"); "delek" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.lxterminal)];
-        });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"delek"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"
-          else "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.alacritty)];
-        });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"delek"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"); "desert" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.lxterminal)];
-        });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"desert"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"
-          else "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.alacritty)];
-        });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"desert"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"); "elflord" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.lxterminal)];
-        });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"elflord"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"
-          else "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.alacritty)];
-        });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"elflord"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"); "evening" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.lxterminal)];
-        });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"evening"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"
-          else "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.alacritty)];
-        });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"evening"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"); "habamax" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.lxterminal)];
-        });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"habamax"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"
-          else "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.alacritty)];
-        });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"habamax"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"); "industry" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.lxterminal)];
-        });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"industry"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"
-          else "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.alacritty)];
-        });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"industry"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"); "koehler" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.lxterminal)];
-        });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"koehler"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"
-          else "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.alacritty)];
-        });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"koehler"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"); "lunaperche" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.lxterminal)];
-        });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"lunaperche"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"
-          else "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.alacritty)];
-        });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"lunaperche"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"); "morning" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.lxterminal)];
-        });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"morning"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"
-          else "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.alacritty)];
-        });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"morning"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"); "murphy" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.lxterminal)];
-        });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"murphy"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"
-          else "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.alacritty)];
-        });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"murphy"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"); "pablo" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.lxterminal)];
-        });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"pablo"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"
-          else "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.alacritty)];
-        });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"pablo"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"); "peachpuff" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.lxterminal)];
-        });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"peachpuff"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"
-          else "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.alacritty)];
-        });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"peachpuff"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"); "quiet" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.lxterminal)];
-        });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"quiet"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"
-          else "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.alacritty)];
-        });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"quiet"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"); "ron" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.lxterminal)];
-        });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"ron"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"
-          else "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.alacritty)];
-        });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"ron"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"); "shine" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.lxterminal)];
-        });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"shine"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"
-          else "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.alacritty)];
-        });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"shine"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"); "slate" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.lxterminal)];
-        });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"slate"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"
-          else "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.alacritty)];
-        });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"slate"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"); "torte" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.lxterminal)];
-        });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"torte"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"
-          else "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.alacritty)];
-        });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"torte"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"); "zellner" = builtins.toString (if system == "aarch64-linux" || system == "x86_64-linux"
-          then "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.lxterminal)];
-        });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"zellner"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"
-          else "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.alacritty)];
-        });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"zellner"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"); };
-      }}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}";
-          };
-          "vscodium/single" = {
-            "type" = "app";
-            "program" = "${let
-        dev = pkgs.mkShell {};
-        shell = "
-    set -euo pipefail
-
-    TEMP_DIR=\$(mktemp -d --suffix vscodium)
-
-    # copy the vscodium config
-    cp -r ${let dev = pkgs.mkShell {}; in
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
     pkgs.runCommand "garn-pkg" {
       buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
     } "${"mkdir -p \$out"}
@@ -3029,40 +1939,9 @@ ${"
       ${""}
     "}
 ${"
-    USER_CONFIG=.config/VSCodium/User
-    if test \$(uname) = \"Darwin\" ; then
-      USER_CONFIG=\"Library/Application Support/VSCodium/User\"
-    fi
-    mkdir -p \"\$out/\$USER_CONFIG/User\"
-    cp ${pkgs.writeTextFile {
-    name = "${"vscodium-config"}";
-    text = "${"{
-  \"update.mode\": \"none\",
-  \"window.menuBarVisibility\": \"hidden\",
-  \"workbench.colorTheme\": \"Abyss\"
-}"}";
-  }} \"\$out/\$USER_CONFIG/settings.json\"
-  "}
-"}/. \$TEMP_DIR
-    chmod -R u+rwX \$TEMP_DIR
-
-    export HOME=\$TEMP_DIR
-    export XDG_CONFIG_HOME=\$TEMP_DIR/.config
-
-    killVsCodium() {
-      echo killing \$(cat \$HOME/.config/VSCodium/code.lock) || true;
-      kill \$(cat \$HOME/.config/VSCodium/code.lock) || true;
-      rm -rf \$TEMP_DIR
-    }
-    trap \"killVsCodium\" EXIT
-
-    ${(pkgs.vscode-with-extensions.override
-    {
-      vscode = pkgs.vscodium;
-      vscodeExtensions = [
-      ];
-    }
-  )}/bin/codium --new-window --disable-workspace-trust ${"${pkgs.writeTextFile {
+        echo 'colorscheme blue' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -3075,8 +1954,7 @@ ${"
 }
 
 console.log(fac(6));"}";
-  }}"} --wait
-  ";
+  }}"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -3086,266 +1964,15 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}";
-          };
-          "vscodium/runAll" = {
-            "type" = "app";
-            "program" = "${let
-        dev = pkgs.mkShell {};
-        shell = "${pkgs.process-compose}/bin/process-compose up -f ${pkgs.writeText "process-compose.yml" (builtins.toJSON { "version" = "0.5"; "processes" = { "Abyss" = { "command" = "${let
-        dev = pkgs.mkShell {};
-        shell = "
-    set -euo pipefail
-
-    TEMP_DIR=\$(mktemp -d --suffix vscodium)
-
-    # copy the vscodium config
-    cp -r ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-    USER_CONFIG=.config/VSCodium/User
-    if test \$(uname) = \"Darwin\" ; then
-      USER_CONFIG=\"Library/Application Support/VSCodium/User\"
-    fi
-    mkdir -p \"\$out/\$USER_CONFIG/User\"
-    cp ${pkgs.writeTextFile {
-    name = "${"vscodium-config"}";
-    text = "${"{
-  \"update.mode\": \"none\",
-  \"window.menuBarVisibility\": \"hidden\",
-  \"workbench.colorTheme\": \"Abyss\"
-}"}";
-  }} \"\$out/\$USER_CONFIG/settings.json\"
-  "}
-"}/. \$TEMP_DIR
-    chmod -R u+rwX \$TEMP_DIR
-
-    export HOME=\$TEMP_DIR
-    export XDG_CONFIG_HOME=\$TEMP_DIR/.config
-
-    killVsCodium() {
-      echo killing \$(cat \$HOME/.config/VSCodium/code.lock) || true;
-      kill \$(cat \$HOME/.config/VSCodium/code.lock) || true;
-      rm -rf \$TEMP_DIR
-    }
-    trap \"killVsCodium\" EXIT
-
-    ${(pkgs.vscode-with-extensions.override
-    {
-      vscode = pkgs.vscodium;
-      vscodeExtensions = [
-      ];
-    }
-  )}/bin/codium --new-window --disable-workspace-trust ${"${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"} --wait
-  ";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"; "environment" = []; }; "Default Dark+" = { "command" = "${let
-        dev = pkgs.mkShell {};
-        shell = "
-    set -euo pipefail
-
-    TEMP_DIR=\$(mktemp -d --suffix vscodium)
-
-    # copy the vscodium config
-    cp -r ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-    USER_CONFIG=.config/VSCodium/User
-    if test \$(uname) = \"Darwin\" ; then
-      USER_CONFIG=\"Library/Application Support/VSCodium/User\"
-    fi
-    mkdir -p \"\$out/\$USER_CONFIG/User\"
-    cp ${pkgs.writeTextFile {
-    name = "${"vscodium-config"}";
-    text = "${"{
-  \"update.mode\": \"none\",
-  \"window.menuBarVisibility\": \"hidden\",
-  \"workbench.colorTheme\": \"Default Dark+\"
-}"}";
-  }} \"\$out/\$USER_CONFIG/settings.json\"
-  "}
-"}/. \$TEMP_DIR
-    chmod -R u+rwX \$TEMP_DIR
-
-    export HOME=\$TEMP_DIR
-    export XDG_CONFIG_HOME=\$TEMP_DIR/.config
-
-    killVsCodium() {
-      echo killing \$(cat \$HOME/.config/VSCodium/code.lock) || true;
-      kill \$(cat \$HOME/.config/VSCodium/code.lock) || true;
-      rm -rf \$TEMP_DIR
-    }
-    trap \"killVsCodium\" EXIT
-
-    ${(pkgs.vscode-with-extensions.override
-    {
-      vscode = pkgs.vscodium;
-      vscodeExtensions = [
-      ];
-    }
-  )}/bin/codium --new-window --disable-workspace-trust ${"${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"} --wait
-  ";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"; "environment" = []; }; "Default High Contrast" = { "command" = "${let
-        dev = pkgs.mkShell {};
-        shell = "
-    set -euo pipefail
-
-    TEMP_DIR=\$(mktemp -d --suffix vscodium)
-
-    # copy the vscodium config
-    cp -r ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-    USER_CONFIG=.config/VSCodium/User
-    if test \$(uname) = \"Darwin\" ; then
-      USER_CONFIG=\"Library/Application Support/VSCodium/User\"
-    fi
-    mkdir -p \"\$out/\$USER_CONFIG/User\"
-    cp ${pkgs.writeTextFile {
-    name = "${"vscodium-config"}";
-    text = "${"{
-  \"update.mode\": \"none\",
-  \"window.menuBarVisibility\": \"hidden\",
-  \"workbench.colorTheme\": \"Default High Contrast\"
-}"}";
-  }} \"\$out/\$USER_CONFIG/settings.json\"
-  "}
-"}/. \$TEMP_DIR
-    chmod -R u+rwX \$TEMP_DIR
-
-    export HOME=\$TEMP_DIR
-    export XDG_CONFIG_HOME=\$TEMP_DIR/.config
-
-    killVsCodium() {
-      echo killing \$(cat \$HOME/.config/VSCodium/code.lock) || true;
-      kill \$(cat \$HOME/.config/VSCodium/code.lock) || true;
-      rm -rf \$TEMP_DIR
-    }
-    trap \"killVsCodium\" EXIT
-
-    ${(pkgs.vscode-with-extensions.override
-    {
-      vscode = pkgs.vscodium;
-      vscodeExtensions = [
-      ];
-    }
-  )}/bin/codium --new-window --disable-workspace-trust ${"${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}"} --wait
-  ";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"; "environment" = []; }; }; })}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}";
-          };
-          "vscodium/battle" = {
-            "type" = "app";
-            "program" = "${let
+      ''}"
+      else "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
           nativeBuildInputs =
             previousAttrs.nativeBuildInputs
             ++
-            [(pkgs.deno)];
+            [(pkgs.alacritty)];
         });
-        shell = "deno run --allow-read --allow-run ${./knockout-runner.ts} ${pkgs.writeTextFile {
-        name = "executables-json";
-        text = builtins.toJSON { "Abyss" = "${let
-        dev = pkgs.mkShell {};
-        shell = "
-    set -euo pipefail
-
-    TEMP_DIR=\$(mktemp -d --suffix vscodium)
-
-    # copy the vscodium config
-    cp -r ${let dev = pkgs.mkShell {}; in
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
     pkgs.runCommand "garn-pkg" {
       buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
     } "${"mkdir -p \$out"}
@@ -3354,40 +1981,9 @@ ${"
       ${""}
     "}
 ${"
-    USER_CONFIG=.config/VSCodium/User
-    if test \$(uname) = \"Darwin\" ; then
-      USER_CONFIG=\"Library/Application Support/VSCodium/User\"
-    fi
-    mkdir -p \"\$out/\$USER_CONFIG/User\"
-    cp ${pkgs.writeTextFile {
-    name = "${"vscodium-config"}";
-    text = "${"{
-  \"update.mode\": \"none\",
-  \"window.menuBarVisibility\": \"hidden\",
-  \"workbench.colorTheme\": \"Abyss\"
-}"}";
-  }} \"\$out/\$USER_CONFIG/settings.json\"
-  "}
-"}/. \$TEMP_DIR
-    chmod -R u+rwX \$TEMP_DIR
-
-    export HOME=\$TEMP_DIR
-    export XDG_CONFIG_HOME=\$TEMP_DIR/.config
-
-    killVsCodium() {
-      echo killing \$(cat \$HOME/.config/VSCodium/code.lock) || true;
-      kill \$(cat \$HOME/.config/VSCodium/code.lock) || true;
-      rm -rf \$TEMP_DIR
-    }
-    trap \"killVsCodium\" EXIT
-
-    ${(pkgs.vscode-with-extensions.override
-    {
-      vscode = pkgs.vscodium;
-      vscodeExtensions = [
-      ];
-    }
-  )}/bin/codium --new-window --disable-workspace-trust ${"${pkgs.writeTextFile {
+        echo 'colorscheme blue' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -3400,8 +1996,7 @@ ${"
 }
 
 console.log(fac(6));"}";
-  }}"} --wait
-  ";
+  }}"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -3411,15 +2006,15 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"; "Default Dark+" = "${let
-        dev = pkgs.mkShell {};
-        shell = "
-    set -euo pipefail
-
-    TEMP_DIR=\$(mktemp -d --suffix vscodium)
-
-    # copy the vscodium config
-    cp -r ${let dev = pkgs.mkShell {}; in
+      ''}"; "darkblue" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.lxterminal)];
+        });
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
     pkgs.runCommand "garn-pkg" {
       buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
     } "${"mkdir -p \$out"}
@@ -3428,40 +2023,9 @@ ${"
       ${""}
     "}
 ${"
-    USER_CONFIG=.config/VSCodium/User
-    if test \$(uname) = \"Darwin\" ; then
-      USER_CONFIG=\"Library/Application Support/VSCodium/User\"
-    fi
-    mkdir -p \"\$out/\$USER_CONFIG/User\"
-    cp ${pkgs.writeTextFile {
-    name = "${"vscodium-config"}";
-    text = "${"{
-  \"update.mode\": \"none\",
-  \"window.menuBarVisibility\": \"hidden\",
-  \"workbench.colorTheme\": \"Default Dark+\"
-}"}";
-  }} \"\$out/\$USER_CONFIG/settings.json\"
-  "}
-"}/. \$TEMP_DIR
-    chmod -R u+rwX \$TEMP_DIR
-
-    export HOME=\$TEMP_DIR
-    export XDG_CONFIG_HOME=\$TEMP_DIR/.config
-
-    killVsCodium() {
-      echo killing \$(cat \$HOME/.config/VSCodium/code.lock) || true;
-      kill \$(cat \$HOME/.config/VSCodium/code.lock) || true;
-      rm -rf \$TEMP_DIR
-    }
-    trap \"killVsCodium\" EXIT
-
-    ${(pkgs.vscode-with-extensions.override
-    {
-      vscode = pkgs.vscodium;
-      vscodeExtensions = [
-      ];
-    }
-  )}/bin/codium --new-window --disable-workspace-trust ${"${pkgs.writeTextFile {
+        echo 'colorscheme darkblue' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -3474,8 +2038,7 @@ ${"
 }
 
 console.log(fac(6));"}";
-  }}"} --wait
-  ";
+  }}"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -3485,15 +2048,15 @@ console.log(fac(6));"}";
         export PATH=$(cat ${buildPath}):$PATH
         ${dev.shellHook}
         ${shell} "$@"
-      ''}"; "Default High Contrast" = "${let
-        dev = pkgs.mkShell {};
-        shell = "
-    set -euo pipefail
-
-    TEMP_DIR=\$(mktemp -d --suffix vscodium)
-
-    # copy the vscodium config
-    cp -r ${let dev = pkgs.mkShell {}; in
+      ''}"
+      else "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
     pkgs.runCommand "garn-pkg" {
       buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
     } "${"mkdir -p \$out"}
@@ -3502,40 +2065,9 @@ ${"
       ${""}
     "}
 ${"
-    USER_CONFIG=.config/VSCodium/User
-    if test \$(uname) = \"Darwin\" ; then
-      USER_CONFIG=\"Library/Application Support/VSCodium/User\"
-    fi
-    mkdir -p \"\$out/\$USER_CONFIG/User\"
-    cp ${pkgs.writeTextFile {
-    name = "${"vscodium-config"}";
-    text = "${"{
-  \"update.mode\": \"none\",
-  \"window.menuBarVisibility\": \"hidden\",
-  \"workbench.colorTheme\": \"Default High Contrast\"
-}"}";
-  }} \"\$out/\$USER_CONFIG/settings.json\"
-  "}
-"}/. \$TEMP_DIR
-    chmod -R u+rwX \$TEMP_DIR
-
-    export HOME=\$TEMP_DIR
-    export XDG_CONFIG_HOME=\$TEMP_DIR/.config
-
-    killVsCodium() {
-      echo killing \$(cat \$HOME/.config/VSCodium/code.lock) || true;
-      kill \$(cat \$HOME/.config/VSCodium/code.lock) || true;
-      rm -rf \$TEMP_DIR
-    }
-    trap \"killVsCodium\" EXIT
-
-    ${(pkgs.vscode-with-extensions.override
-    {
-      vscode = pkgs.vscodium;
-      vscodeExtensions = [
-      ];
-    }
-  )}/bin/codium --new-window --disable-workspace-trust ${"${pkgs.writeTextFile {
+        echo 'colorscheme darkblue' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
     name = "${"example.ts"}";
     text = "${"function fac(x: number): number {
   if (x === 0) {
@@ -3548,8 +2080,1603 @@ ${"
 }
 
 console.log(fac(6));"}";
-  }}"} --wait
-  ";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "default" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.lxterminal)];
+        });
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme default' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"
+      else "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme default' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "delek" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.lxterminal)];
+        });
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme delek' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"
+      else "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme delek' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "desert" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.lxterminal)];
+        });
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme desert' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"
+      else "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme desert' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "elflord" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.lxterminal)];
+        });
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme elflord' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"
+      else "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme elflord' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "evening" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.lxterminal)];
+        });
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme evening' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"
+      else "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme evening' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "habamax" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.lxterminal)];
+        });
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme habamax' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"
+      else "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme habamax' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "industry" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.lxterminal)];
+        });
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme industry' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"
+      else "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme industry' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "koehler" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.lxterminal)];
+        });
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme koehler' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"
+      else "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme koehler' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "lunaperche" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.lxterminal)];
+        });
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme lunaperche' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"
+      else "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme lunaperche' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "morning" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.lxterminal)];
+        });
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme morning' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"
+      else "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme morning' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "murphy" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.lxterminal)];
+        });
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme murphy' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"
+      else "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme murphy' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "pablo" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.lxterminal)];
+        });
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme pablo' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"
+      else "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme pablo' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "peachpuff" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.lxterminal)];
+        });
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme peachpuff' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"
+      else "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme peachpuff' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "quiet" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.lxterminal)];
+        });
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme quiet' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"
+      else "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme quiet' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "ron" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.lxterminal)];
+        });
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme ron' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"
+      else "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme ron' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "shine" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.lxterminal)];
+        });
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme shine' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"
+      else "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme shine' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "slate" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.lxterminal)];
+        });
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme slate' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"
+      else "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme slate' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "torte" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.lxterminal)];
+        });
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme torte' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"
+      else "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme torte' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "zellner" = if (pkgs.lib.any (x : x == system) ["aarch64-linux" "x86_64-linux"])
+      then "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.lxterminal)];
+        });
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme zellner' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"
+      else "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+        echo 'colorscheme zellner' > \$out/.vimrc
+      "}
+"}/.vimrc ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
