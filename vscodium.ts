@@ -52,10 +52,11 @@ const openVsCodium = (
     export XDG_CONFIG_HOME=$TEMP_DIR/.config
 
     killVsCodium() {
-      kill $(cat $XDG_CONFIG_HOME/VSCodium/code.lock) || true;
+      echo killing $(cat $HOME/.config/VSCodium/code.lock) || true;
+      kill $(cat $HOME/.config/VSCodium/code.lock) || true;
       rm -rf $TEMP_DIR
     }
-    trap "killVsCodium &> /dev/null" EXIT
+    trap "killVsCodium" EXIT
 
     ${vscodium}/bin/codium --new-window --disable-workspace-trust ${file} --wait
   `.setDescription("open vscodium");
@@ -65,19 +66,19 @@ export const vscodiumColorschemes = [
   "Abyss",
   "Default Dark+",
   "Default High Contrast",
-  "Default High Contrast Light",
-  "Default Light+",
-  "Default Light Modern",
-  "Kimbie Dark",
-  "Monokai",
-  "Monokai Dimmed",
-  "Quiet Light",
-  "Red",
-  "Solarized Dark",
-  "Solarized Light",
-  "Tomorrow Night Blue",
-  "Visual Studio Dark",
-  "Visual Studio Light",
+  // "Default High Contrast Light",
+  // "Default Light+",
+  // "Default Light Modern",
+  // "Kimbie Dark",
+  // "Monokai",
+  // "Monokai Dimmed",
+  // "Quiet Light",
+  // "Red",
+  // "Solarized Dark",
+  // "Solarized Light",
+  // "Tomorrow Night Blue",
+  // "Visual Studio Dark",
+  // "Visual Studio Light",
 ];
 
 export const vscodiumWithColorscheme = (colorscheme: string): garn.Executable =>
@@ -89,3 +90,10 @@ export const vscodiumWithColorscheme = (colorscheme: string): garn.Executable =>
       "workbench.colorTheme": colorscheme,
     },
   });
+
+export const vscodiumCandidates = Object.fromEntries(
+  vscodiumColorschemes.map((colorscheme) => [
+    colorscheme,
+    vscodiumWithColorscheme(colorscheme),
+  ]),
+);

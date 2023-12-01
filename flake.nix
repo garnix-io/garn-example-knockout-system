@@ -86,7 +86,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"murphy"}";
       }} ${pkgs.writeTextFile {
@@ -160,7 +160,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"blue"}";
       }} ${pkgs.writeTextFile {
@@ -228,7 +228,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"darkblue"}";
       }} ${pkgs.writeTextFile {
@@ -296,7 +296,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"default"}";
       }} ${pkgs.writeTextFile {
@@ -364,7 +364,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"delek"}";
       }} ${pkgs.writeTextFile {
@@ -432,7 +432,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"desert"}";
       }} ${pkgs.writeTextFile {
@@ -500,7 +500,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"elflord"}";
       }} ${pkgs.writeTextFile {
@@ -568,7 +568,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"evening"}";
       }} ${pkgs.writeTextFile {
@@ -636,7 +636,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"habamax"}";
       }} ${pkgs.writeTextFile {
@@ -704,7 +704,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"industry"}";
       }} ${pkgs.writeTextFile {
@@ -772,7 +772,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"koehler"}";
       }} ${pkgs.writeTextFile {
@@ -840,7 +840,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"lunaperche"}";
       }} ${pkgs.writeTextFile {
@@ -908,7 +908,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"morning"}";
       }} ${pkgs.writeTextFile {
@@ -976,7 +976,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"murphy"}";
       }} ${pkgs.writeTextFile {
@@ -1044,7 +1044,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"pablo"}";
       }} ${pkgs.writeTextFile {
@@ -1112,7 +1112,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"peachpuff"}";
       }} ${pkgs.writeTextFile {
@@ -1180,7 +1180,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"quiet"}";
       }} ${pkgs.writeTextFile {
@@ -1248,7 +1248,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"ron"}";
       }} ${pkgs.writeTextFile {
@@ -1316,7 +1316,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"shine"}";
       }} ${pkgs.writeTextFile {
@@ -1384,7 +1384,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"slate"}";
       }} ${pkgs.writeTextFile {
@@ -1452,7 +1452,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"torte"}";
       }} ${pkgs.writeTextFile {
@@ -1520,7 +1520,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"zellner"}";
       }} ${pkgs.writeTextFile {
@@ -1611,7 +1611,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"blue"}";
       }} ${pkgs.writeTextFile {
@@ -1679,7 +1679,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"darkblue"}";
       }} ${pkgs.writeTextFile {
@@ -1747,7 +1747,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"default"}";
       }} ${pkgs.writeTextFile {
@@ -1815,7 +1815,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"delek"}";
       }} ${pkgs.writeTextFile {
@@ -1883,7 +1883,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"desert"}";
       }} ${pkgs.writeTextFile {
@@ -1951,7 +1951,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"elflord"}";
       }} ${pkgs.writeTextFile {
@@ -2019,7 +2019,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"evening"}";
       }} ${pkgs.writeTextFile {
@@ -2087,7 +2087,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"habamax"}";
       }} ${pkgs.writeTextFile {
@@ -2155,7 +2155,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"industry"}";
       }} ${pkgs.writeTextFile {
@@ -2223,7 +2223,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"koehler"}";
       }} ${pkgs.writeTextFile {
@@ -2291,7 +2291,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"lunaperche"}";
       }} ${pkgs.writeTextFile {
@@ -2359,7 +2359,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"morning"}";
       }} ${pkgs.writeTextFile {
@@ -2427,7 +2427,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"murphy"}";
       }} ${pkgs.writeTextFile {
@@ -2495,7 +2495,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"pablo"}";
       }} ${pkgs.writeTextFile {
@@ -2563,7 +2563,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"peachpuff"}";
       }} ${pkgs.writeTextFile {
@@ -2631,7 +2631,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"quiet"}";
       }} ${pkgs.writeTextFile {
@@ -2699,7 +2699,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"ron"}";
       }} ${pkgs.writeTextFile {
@@ -2767,7 +2767,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"shine"}";
       }} ${pkgs.writeTextFile {
@@ -2835,7 +2835,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"slate"}";
       }} ${pkgs.writeTextFile {
@@ -2903,7 +2903,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"torte"}";
       }} ${pkgs.writeTextFile {
@@ -2971,7 +2971,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"zellner"}";
       }} ${pkgs.writeTextFile {
@@ -2998,6 +2998,568 @@ console.log(fac(6));"}";
         ${dev.shellHook}
         ${shell} "$@"
       ''}"); };
+      }}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}";
+          };
+          "vscodium/single" = {
+            "type" = "app";
+            "program" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    set -euo pipefail
+
+    TEMP_DIR=\$(mktemp -d --suffix vscodium)
+
+    # copy the vscodium config
+    cp -r ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+    USER_CONFIG=.config/VSCodium/User
+    if test \$(uname) = \"Darwin\" ; then
+      USER_CONFIG=\"Library/Application Support/VSCodium/User\"
+    fi
+    mkdir -p \"\$out/\$USER_CONFIG/User\"
+    cp ${pkgs.writeTextFile {
+    name = "${"vscodium-config"}";
+    text = "${"{
+  \"update.mode\": \"none\",
+  \"window.menuBarVisibility\": \"hidden\",
+  \"workbench.colorTheme\": \"Abyss\"
+}"}";
+  }} \"\$out/\$USER_CONFIG/settings.json\"
+  "}
+"}/. \$TEMP_DIR
+    chmod -R u+rwX \$TEMP_DIR
+
+    export HOME=\$TEMP_DIR
+    export XDG_CONFIG_HOME=\$TEMP_DIR/.config
+
+    killVsCodium() {
+      echo killing \$(cat \$HOME/.config/VSCodium/code.lock) || true;
+      kill \$(cat \$HOME/.config/VSCodium/code.lock) || true;
+      rm -rf \$TEMP_DIR
+    }
+    trap \"killVsCodium\" EXIT
+
+    ${(pkgs.vscode-with-extensions.override
+    {
+      vscode = pkgs.vscodium;
+      vscodeExtensions = [
+      ];
+    }
+  )}/bin/codium --new-window --disable-workspace-trust ${"${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"} --wait
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}";
+          };
+          "vscodium/runAll" = {
+            "type" = "app";
+            "program" = "${let
+        dev = pkgs.mkShell {};
+        shell = "${pkgs.process-compose}/bin/process-compose up -f ${pkgs.writeText "process-compose.yml" (builtins.toJSON { "version" = "0.5"; "processes" = { "Abyss" = { "command" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    set -euo pipefail
+
+    TEMP_DIR=\$(mktemp -d --suffix vscodium)
+
+    # copy the vscodium config
+    cp -r ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+    USER_CONFIG=.config/VSCodium/User
+    if test \$(uname) = \"Darwin\" ; then
+      USER_CONFIG=\"Library/Application Support/VSCodium/User\"
+    fi
+    mkdir -p \"\$out/\$USER_CONFIG/User\"
+    cp ${pkgs.writeTextFile {
+    name = "${"vscodium-config"}";
+    text = "${"{
+  \"update.mode\": \"none\",
+  \"window.menuBarVisibility\": \"hidden\",
+  \"workbench.colorTheme\": \"Abyss\"
+}"}";
+  }} \"\$out/\$USER_CONFIG/settings.json\"
+  "}
+"}/. \$TEMP_DIR
+    chmod -R u+rwX \$TEMP_DIR
+
+    export HOME=\$TEMP_DIR
+    export XDG_CONFIG_HOME=\$TEMP_DIR/.config
+
+    killVsCodium() {
+      echo killing \$(cat \$HOME/.config/VSCodium/code.lock) || true;
+      kill \$(cat \$HOME/.config/VSCodium/code.lock) || true;
+      rm -rf \$TEMP_DIR
+    }
+    trap \"killVsCodium\" EXIT
+
+    ${(pkgs.vscode-with-extensions.override
+    {
+      vscode = pkgs.vscodium;
+      vscodeExtensions = [
+      ];
+    }
+  )}/bin/codium --new-window --disable-workspace-trust ${"${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"} --wait
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "environment" = []; }; "Default Dark+" = { "command" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    set -euo pipefail
+
+    TEMP_DIR=\$(mktemp -d --suffix vscodium)
+
+    # copy the vscodium config
+    cp -r ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+    USER_CONFIG=.config/VSCodium/User
+    if test \$(uname) = \"Darwin\" ; then
+      USER_CONFIG=\"Library/Application Support/VSCodium/User\"
+    fi
+    mkdir -p \"\$out/\$USER_CONFIG/User\"
+    cp ${pkgs.writeTextFile {
+    name = "${"vscodium-config"}";
+    text = "${"{
+  \"update.mode\": \"none\",
+  \"window.menuBarVisibility\": \"hidden\",
+  \"workbench.colorTheme\": \"Default Dark+\"
+}"}";
+  }} \"\$out/\$USER_CONFIG/settings.json\"
+  "}
+"}/. \$TEMP_DIR
+    chmod -R u+rwX \$TEMP_DIR
+
+    export HOME=\$TEMP_DIR
+    export XDG_CONFIG_HOME=\$TEMP_DIR/.config
+
+    killVsCodium() {
+      echo killing \$(cat \$HOME/.config/VSCodium/code.lock) || true;
+      kill \$(cat \$HOME/.config/VSCodium/code.lock) || true;
+      rm -rf \$TEMP_DIR
+    }
+    trap \"killVsCodium\" EXIT
+
+    ${(pkgs.vscode-with-extensions.override
+    {
+      vscode = pkgs.vscodium;
+      vscodeExtensions = [
+      ];
+    }
+  )}/bin/codium --new-window --disable-workspace-trust ${"${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"} --wait
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "environment" = []; }; "Default High Contrast" = { "command" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    set -euo pipefail
+
+    TEMP_DIR=\$(mktemp -d --suffix vscodium)
+
+    # copy the vscodium config
+    cp -r ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+    USER_CONFIG=.config/VSCodium/User
+    if test \$(uname) = \"Darwin\" ; then
+      USER_CONFIG=\"Library/Application Support/VSCodium/User\"
+    fi
+    mkdir -p \"\$out/\$USER_CONFIG/User\"
+    cp ${pkgs.writeTextFile {
+    name = "${"vscodium-config"}";
+    text = "${"{
+  \"update.mode\": \"none\",
+  \"window.menuBarVisibility\": \"hidden\",
+  \"workbench.colorTheme\": \"Default High Contrast\"
+}"}";
+  }} \"\$out/\$USER_CONFIG/settings.json\"
+  "}
+"}/. \$TEMP_DIR
+    chmod -R u+rwX \$TEMP_DIR
+
+    export HOME=\$TEMP_DIR
+    export XDG_CONFIG_HOME=\$TEMP_DIR/.config
+
+    killVsCodium() {
+      echo killing \$(cat \$HOME/.config/VSCodium/code.lock) || true;
+      kill \$(cat \$HOME/.config/VSCodium/code.lock) || true;
+      rm -rf \$TEMP_DIR
+    }
+    trap \"killVsCodium\" EXIT
+
+    ${(pkgs.vscode-with-extensions.override
+    {
+      vscode = pkgs.vscodium;
+      vscodeExtensions = [
+      ];
+    }
+  )}/bin/codium --new-window --disable-workspace-trust ${"${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"} --wait
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "environment" = []; }; }; })}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}";
+          };
+          "vscodium/battle" = {
+            "type" = "app";
+            "program" = "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.deno)];
+        });
+        shell = "deno run --allow-read --allow-run ${./knockout-runner.ts} ${pkgs.writeTextFile {
+        name = "executables-json";
+        text = builtins.toJSON { "Abyss" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    set -euo pipefail
+
+    TEMP_DIR=\$(mktemp -d --suffix vscodium)
+
+    # copy the vscodium config
+    cp -r ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+    USER_CONFIG=.config/VSCodium/User
+    if test \$(uname) = \"Darwin\" ; then
+      USER_CONFIG=\"Library/Application Support/VSCodium/User\"
+    fi
+    mkdir -p \"\$out/\$USER_CONFIG/User\"
+    cp ${pkgs.writeTextFile {
+    name = "${"vscodium-config"}";
+    text = "${"{
+  \"update.mode\": \"none\",
+  \"window.menuBarVisibility\": \"hidden\",
+  \"workbench.colorTheme\": \"Abyss\"
+}"}";
+  }} \"\$out/\$USER_CONFIG/settings.json\"
+  "}
+"}/. \$TEMP_DIR
+    chmod -R u+rwX \$TEMP_DIR
+
+    export HOME=\$TEMP_DIR
+    export XDG_CONFIG_HOME=\$TEMP_DIR/.config
+
+    killVsCodium() {
+      echo killing \$(cat \$HOME/.config/VSCodium/code.lock) || true;
+      kill \$(cat \$HOME/.config/VSCodium/code.lock) || true;
+      rm -rf \$TEMP_DIR
+    }
+    trap \"killVsCodium\" EXIT
+
+    ${(pkgs.vscode-with-extensions.override
+    {
+      vscode = pkgs.vscodium;
+      vscodeExtensions = [
+      ];
+    }
+  )}/bin/codium --new-window --disable-workspace-trust ${"${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"} --wait
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "Default Dark+" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    set -euo pipefail
+
+    TEMP_DIR=\$(mktemp -d --suffix vscodium)
+
+    # copy the vscodium config
+    cp -r ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+    USER_CONFIG=.config/VSCodium/User
+    if test \$(uname) = \"Darwin\" ; then
+      USER_CONFIG=\"Library/Application Support/VSCodium/User\"
+    fi
+    mkdir -p \"\$out/\$USER_CONFIG/User\"
+    cp ${pkgs.writeTextFile {
+    name = "${"vscodium-config"}";
+    text = "${"{
+  \"update.mode\": \"none\",
+  \"window.menuBarVisibility\": \"hidden\",
+  \"workbench.colorTheme\": \"Default Dark+\"
+}"}";
+  }} \"\$out/\$USER_CONFIG/settings.json\"
+  "}
+"}/. \$TEMP_DIR
+    chmod -R u+rwX \$TEMP_DIR
+
+    export HOME=\$TEMP_DIR
+    export XDG_CONFIG_HOME=\$TEMP_DIR/.config
+
+    killVsCodium() {
+      echo killing \$(cat \$HOME/.config/VSCodium/code.lock) || true;
+      kill \$(cat \$HOME/.config/VSCodium/code.lock) || true;
+      rm -rf \$TEMP_DIR
+    }
+    trap \"killVsCodium\" EXIT
+
+    ${(pkgs.vscode-with-extensions.override
+    {
+      vscode = pkgs.vscodium;
+      vscodeExtensions = [
+      ];
+    }
+  )}/bin/codium --new-window --disable-workspace-trust ${"${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"} --wait
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "Default High Contrast" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    set -euo pipefail
+
+    TEMP_DIR=\$(mktemp -d --suffix vscodium)
+
+    # copy the vscodium config
+    cp -r ${let dev = pkgs.mkShell {}; in
+    pkgs.runCommand "garn-pkg" {
+      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
+    } "${"mkdir -p \$out"}
+${"
+      ${""}
+      ${""}
+    "}
+${"
+    USER_CONFIG=.config/VSCodium/User
+    if test \$(uname) = \"Darwin\" ; then
+      USER_CONFIG=\"Library/Application Support/VSCodium/User\"
+    fi
+    mkdir -p \"\$out/\$USER_CONFIG/User\"
+    cp ${pkgs.writeTextFile {
+    name = "${"vscodium-config"}";
+    text = "${"{
+  \"update.mode\": \"none\",
+  \"window.menuBarVisibility\": \"hidden\",
+  \"workbench.colorTheme\": \"Default High Contrast\"
+}"}";
+  }} \"\$out/\$USER_CONFIG/settings.json\"
+  "}
+"}/. \$TEMP_DIR
+    chmod -R u+rwX \$TEMP_DIR
+
+    export HOME=\$TEMP_DIR
+    export XDG_CONFIG_HOME=\$TEMP_DIR/.config
+
+    killVsCodium() {
+      echo killing \$(cat \$HOME/.config/VSCodium/code.lock) || true;
+      kill \$(cat \$HOME/.config/VSCodium/code.lock) || true;
+      rm -rf \$TEMP_DIR
+    }
+    trap \"killVsCodium\" EXIT
+
+    ${(pkgs.vscode-with-extensions.override
+    {
+      vscode = pkgs.vscodium;
+      vscodeExtensions = [
+      ];
+    }
+  )}/bin/codium --new-window --disable-workspace-trust ${"${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}"} --wait
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; };
       }}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
