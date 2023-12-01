@@ -2,31 +2,9 @@ import * as garn from "https://garn.io/ts/v0.0.18/mod.ts";
 import * as pkgs from "https://garn.io/ts/v0.0.18/nixpkgs.ts";
 import * as nix from "https://garn.io/ts/v0.0.18/nix.ts";
 import { openVsCodium } from "./vscode.ts";
-import {
-  mapValues,
-  writeTextFile,
-} from "https://garn.io/ts/v0.0.18/internal/utils.ts";
-import outdent from "https://deno.land/x/outdent@v0.8.0/mod.ts";
-
-const exampleFile: garn.Package = garn.mkPackage(
-  writeTextFile(
-    "example.ts",
-    outdent`
-        function fac(x: number): number {
-          if (x === 0) {
-            return 1;
-          } else if (x < 0) {
-            throw new Error("fac called with a negative number");
-          } else {
-            return x * fac(x - 1);
-          }
-        }
-
-        console.log(fac(6));
-      `,
-  ),
-  "example code file",
-);
+import { mapValues } from "https://garn.io/ts/v0.0.18/internal/utils.ts";
+import { nvimColorschemes, vim } from "./vim.ts";
+import { exampleFile } from "./exampleFile.ts";
 
 const colorThemes = [
   "Abyss",
@@ -84,48 +62,6 @@ export const colorThemeBattle = knockOut(
     ]),
   ),
 );
-
-export const vim = (colorScheme: string): garn.Executable => {
-  const vimrc = garn.mkPackage(
-    nix.nixRaw`
-      pkgs.writeTextFile {
-        name = "vimrc";
-        text = ${nix.nixStrLit`colorscheme ${colorScheme}`};
-      }
-    `,
-    "vimrc",
-  );
-  return garn.shell`
-    # export HOME=/nope
-    exec ${nix.nixRaw`pkgs.xfce.xfce4-terminal`}/bin/xfce4-terminal --disable-server --command "${
-    pkgs.neovim
-  }/bin/nvim -u ${vimrc} ${exampleFile}" &> /dev/null
-  `;
-};
-
-const nvimColorschemes = [
-  "blue",
-  "darkblue",
-  "default",
-  "delek",
-  "desert",
-  "elflord",
-  "evening",
-  "habamax",
-  "industry",
-  "koehler",
-  "lunaperche",
-  "morning",
-  "murphy",
-  "pablo",
-  "peachpuff",
-  "quiet",
-  "ron",
-  "shine",
-  "slate",
-  "torte",
-  "zellner",
-];
 
 export const vimBattle: garn.Executable = knockOut(
   Object.fromEntries(
