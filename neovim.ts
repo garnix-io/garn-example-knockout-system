@@ -24,7 +24,7 @@ const exampleFile: garn.Package = writeTextDir(
 
 const terminalEmulator = (command: nix.NixExpression): garn.Executable => {
   const onLinux = garn.emptyEnvironment.withDevTools([pkgs.lxterminal])
-    .shell`exec lxterminal --no-remote --command ${command}`;
+    .shell`exec lxterminal --no-remote --command ${command} &> /dev/null`;
   const onMac = garn.emptyEnvironment.withDevTools([pkgs.alacritty])
     .shell`exec alacritty --command ${command}`;
   return mkExecutable(

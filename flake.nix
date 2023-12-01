@@ -63,7 +63,7 @@
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -125,7 +125,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -181,7 +181,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -237,7 +237,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -293,7 +293,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -349,7 +349,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -405,7 +405,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -461,7 +461,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -517,7 +517,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -573,7 +573,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -629,7 +629,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -685,7 +685,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -741,7 +741,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -797,7 +797,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -853,7 +853,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -909,7 +909,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -965,7 +965,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1021,7 +1021,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1077,7 +1077,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1133,7 +1133,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1189,7 +1189,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1245,7 +1245,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1324,7 +1324,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1380,7 +1380,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1436,7 +1436,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1492,7 +1492,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1548,7 +1548,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1604,7 +1604,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1660,7 +1660,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1716,7 +1716,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1772,7 +1772,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1828,7 +1828,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1884,7 +1884,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1940,7 +1940,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1996,7 +1996,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -2052,7 +2052,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -2108,7 +2108,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -2164,7 +2164,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -2220,7 +2220,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -2276,7 +2276,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -2332,7 +2332,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -2388,7 +2388,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -2444,7 +2444,7 @@ console.log(fac(6));"}/example.ts"}";
   }
 }
 
-console.log(fac(6));"}/example.ts"}";
+console.log(fac(6));"}/example.ts"} &> /dev/null";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
