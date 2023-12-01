@@ -52,7 +52,7 @@
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"murphy"}";
       }} ${pkgs.writeTextFile {
@@ -80,7 +80,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
             else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"murphy"}";
@@ -121,7 +126,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"blue"}";
       }} ${pkgs.writeTextFile {
@@ -149,7 +154,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"blue"}";
@@ -184,7 +194,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"darkblue"}";
       }} ${pkgs.writeTextFile {
@@ -212,7 +222,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"darkblue"}";
@@ -247,7 +262,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"default"}";
       }} ${pkgs.writeTextFile {
@@ -275,7 +290,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"default"}";
@@ -310,7 +330,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"delek"}";
       }} ${pkgs.writeTextFile {
@@ -338,7 +358,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"delek"}";
@@ -373,7 +398,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"desert"}";
       }} ${pkgs.writeTextFile {
@@ -401,7 +426,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"desert"}";
@@ -436,7 +466,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"elflord"}";
       }} ${pkgs.writeTextFile {
@@ -464,7 +494,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"elflord"}";
@@ -499,7 +534,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"evening"}";
       }} ${pkgs.writeTextFile {
@@ -527,7 +562,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"evening"}";
@@ -562,7 +602,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"habamax"}";
       }} ${pkgs.writeTextFile {
@@ -590,7 +630,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"habamax"}";
@@ -625,7 +670,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"industry"}";
       }} ${pkgs.writeTextFile {
@@ -653,7 +698,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"industry"}";
@@ -688,7 +738,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"koehler"}";
       }} ${pkgs.writeTextFile {
@@ -716,7 +766,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"koehler"}";
@@ -751,7 +806,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"lunaperche"}";
       }} ${pkgs.writeTextFile {
@@ -779,7 +834,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"lunaperche"}";
@@ -814,7 +874,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"morning"}";
       }} ${pkgs.writeTextFile {
@@ -842,7 +902,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"morning"}";
@@ -877,7 +942,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"murphy"}";
       }} ${pkgs.writeTextFile {
@@ -905,7 +970,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"murphy"}";
@@ -940,7 +1010,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"pablo"}";
       }} ${pkgs.writeTextFile {
@@ -968,7 +1038,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"pablo"}";
@@ -1003,7 +1078,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"peachpuff"}";
       }} ${pkgs.writeTextFile {
@@ -1031,7 +1106,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"peachpuff"}";
@@ -1066,7 +1146,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"quiet"}";
       }} ${pkgs.writeTextFile {
@@ -1094,7 +1174,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"quiet"}";
@@ -1129,7 +1214,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"ron"}";
       }} ${pkgs.writeTextFile {
@@ -1157,7 +1242,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"ron"}";
@@ -1192,7 +1282,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"shine"}";
       }} ${pkgs.writeTextFile {
@@ -1220,7 +1310,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"shine"}";
@@ -1255,7 +1350,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"slate"}";
       }} ${pkgs.writeTextFile {
@@ -1283,7 +1378,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"slate"}";
@@ -1318,7 +1418,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"torte"}";
       }} ${pkgs.writeTextFile {
@@ -1346,7 +1446,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"torte"}";
@@ -1381,7 +1486,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"zellner"}";
       }} ${pkgs.writeTextFile {
@@ -1409,7 +1514,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"zellner"}";
@@ -1467,7 +1577,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"blue"}";
       }} ${pkgs.writeTextFile {
@@ -1495,7 +1605,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"blue"}";
@@ -1530,7 +1645,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"darkblue"}";
       }} ${pkgs.writeTextFile {
@@ -1558,7 +1673,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"darkblue"}";
@@ -1593,7 +1713,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"default"}";
       }} ${pkgs.writeTextFile {
@@ -1621,7 +1741,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"default"}";
@@ -1656,7 +1781,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"delek"}";
       }} ${pkgs.writeTextFile {
@@ -1684,7 +1809,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"delek"}";
@@ -1719,7 +1849,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"desert"}";
       }} ${pkgs.writeTextFile {
@@ -1747,7 +1877,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"desert"}";
@@ -1782,7 +1917,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"elflord"}";
       }} ${pkgs.writeTextFile {
@@ -1810,7 +1945,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"elflord"}";
@@ -1845,7 +1985,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"evening"}";
       }} ${pkgs.writeTextFile {
@@ -1873,7 +2013,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"evening"}";
@@ -1908,7 +2053,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"habamax"}";
       }} ${pkgs.writeTextFile {
@@ -1936,7 +2081,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"habamax"}";
@@ -1971,7 +2121,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"industry"}";
       }} ${pkgs.writeTextFile {
@@ -1999,7 +2149,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"industry"}";
@@ -2034,7 +2189,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"koehler"}";
       }} ${pkgs.writeTextFile {
@@ -2062,7 +2217,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"koehler"}";
@@ -2097,7 +2257,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"lunaperche"}";
       }} ${pkgs.writeTextFile {
@@ -2125,7 +2285,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"lunaperche"}";
@@ -2160,7 +2325,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"morning"}";
       }} ${pkgs.writeTextFile {
@@ -2188,7 +2353,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"morning"}";
@@ -2223,7 +2393,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"murphy"}";
       }} ${pkgs.writeTextFile {
@@ -2251,7 +2421,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"murphy"}";
@@ -2286,7 +2461,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"pablo"}";
       }} ${pkgs.writeTextFile {
@@ -2314,7 +2489,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"pablo"}";
@@ -2349,7 +2529,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"peachpuff"}";
       }} ${pkgs.writeTextFile {
@@ -2377,7 +2557,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"peachpuff"}";
@@ -2412,7 +2597,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"quiet"}";
       }} ${pkgs.writeTextFile {
@@ -2440,7 +2625,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"quiet"}";
@@ -2475,7 +2665,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"ron"}";
       }} ${pkgs.writeTextFile {
@@ -2503,7 +2693,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"ron"}";
@@ -2538,7 +2733,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"shine"}";
       }} ${pkgs.writeTextFile {
@@ -2566,7 +2761,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"shine"}";
@@ -2601,7 +2801,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"slate"}";
       }} ${pkgs.writeTextFile {
@@ -2629,7 +2829,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"slate"}";
@@ -2664,7 +2869,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"torte"}";
       }} ${pkgs.writeTextFile {
@@ -2692,7 +2897,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"torte"}";
@@ -2727,7 +2937,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "lxterminal --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"zellner"}";
       }} ${pkgs.writeTextFile {
@@ -2755,7 +2965,12 @@ console.log(fac(6));"}";
         ${shell} "$@"
       ''}"
           else "${let
-        dev = pkgs.mkShell {};
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.alacritty)];
+        });
         shell = "alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
         name = "vimrc";
         text = "colorscheme ${"zellner"}";
