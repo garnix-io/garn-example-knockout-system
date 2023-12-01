@@ -42,7 +42,7 @@
           };
         in
         {
-          "colorThemeBattle" = {
+          "neovimBattle" = {
             "type" = "app";
             "program" = "${let
         dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
@@ -51,7 +51,661 @@
             ++
             [(pkgs.deno)];
         });
-        shell = "deno run --allow-read --allow-run ${./knock-out.ts} ${pkgs.writeTextFile {
+        shell = "deno run --allow-read --allow-run ${./knockout-runner.ts} ${pkgs.writeTextFile {
+        name = "executables-json";
+        text = builtins.toJSON { "blue" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"blue"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "darkblue" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"darkblue"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "default" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"default"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "delek" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"delek"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "desert" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"desert"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "elflord" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"elflord"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "evening" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"evening"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "habamax" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"habamax"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "industry" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"industry"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "koehler" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"koehler"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "lunaperche" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"lunaperche"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "morning" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"morning"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "murphy" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"murphy"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "pablo" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"pablo"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "peachpuff" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"peachpuff"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "quiet" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"quiet"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "ron" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"ron"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "shine" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"shine"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "slate" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"slate"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "torte" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"torte"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; "zellner" = "${let
+        dev = pkgs.mkShell {};
+        shell = "
+    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
+        name = "vimrc";
+        text = "colorscheme ${"zellner"}";
+      }} ${pkgs.writeTextFile {
+    name = "${"example.ts"}";
+    text = "${"function fac(x: number): number {
+  if (x === 0) {
+    return 1;
+  } else if (x < 0) {
+    throw new Error(\"fac called with a negative number\");
+  } else {
+    return x * fac(x - 1);
+  }
+}
+
+console.log(fac(6));"}";
+  }}\" &> /dev/null
+  ";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}"; };
+      }}";
+        buildPath = pkgs.runCommand "build-inputs-path" {
+          inherit (dev) buildInputs nativeBuildInputs;
+        } "echo $PATH > $out";
+      in
+      pkgs.writeScript "shell-env"  ''
+        #!${pkgs.bash}/bin/bash
+        export PATH=$(cat ${buildPath}):$PATH
+        ${dev.shellHook}
+        ${shell} "$@"
+      ''}";
+          };
+          "vscodiumBattle" = {
+            "type" = "app";
+            "program" = "${let
+        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
+          nativeBuildInputs =
+            previousAttrs.nativeBuildInputs
+            ++
+            [(pkgs.deno)];
+        });
+        shell = "deno run --allow-read --allow-run ${./knockout-runner.ts} ${pkgs.writeTextFile {
         name = "executables-json";
         text = builtins.toJSON { "Abyss" = "${let
         dev = pkgs.mkShell {};
@@ -1211,681 +1865,6 @@ ${"
 
 console.log(fac(6));"}";
   }}"} --wait
-  ";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"; };
-      }}";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}";
-          };
-          "vimBattle" = {
-            "type" = "app";
-            "program" = "${let
-        dev = (pkgs.mkShell {}).overrideAttrs (finalAttrs: previousAttrs: {
-          nativeBuildInputs =
-            previousAttrs.nativeBuildInputs
-            ++
-            [(pkgs.deno)];
-        });
-        shell = "deno run --allow-read --allow-run ${./knock-out.ts} ${pkgs.writeTextFile {
-        name = "executables-json";
-        text = builtins.toJSON { "blue" = "${let
-        dev = pkgs.mkShell {};
-        shell = "
-    # export HOME=/nope
-    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"blue"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}\" &> /dev/null
-  ";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"; "darkblue" = "${let
-        dev = pkgs.mkShell {};
-        shell = "
-    # export HOME=/nope
-    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"darkblue"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}\" &> /dev/null
-  ";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"; "default" = "${let
-        dev = pkgs.mkShell {};
-        shell = "
-    # export HOME=/nope
-    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"default"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}\" &> /dev/null
-  ";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"; "delek" = "${let
-        dev = pkgs.mkShell {};
-        shell = "
-    # export HOME=/nope
-    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"delek"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}\" &> /dev/null
-  ";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"; "desert" = "${let
-        dev = pkgs.mkShell {};
-        shell = "
-    # export HOME=/nope
-    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"desert"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}\" &> /dev/null
-  ";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"; "elflord" = "${let
-        dev = pkgs.mkShell {};
-        shell = "
-    # export HOME=/nope
-    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"elflord"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}\" &> /dev/null
-  ";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"; "evening" = "${let
-        dev = pkgs.mkShell {};
-        shell = "
-    # export HOME=/nope
-    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"evening"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}\" &> /dev/null
-  ";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"; "habamax" = "${let
-        dev = pkgs.mkShell {};
-        shell = "
-    # export HOME=/nope
-    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"habamax"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}\" &> /dev/null
-  ";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"; "industry" = "${let
-        dev = pkgs.mkShell {};
-        shell = "
-    # export HOME=/nope
-    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"industry"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}\" &> /dev/null
-  ";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"; "koehler" = "${let
-        dev = pkgs.mkShell {};
-        shell = "
-    # export HOME=/nope
-    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"koehler"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}\" &> /dev/null
-  ";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"; "lunaperche" = "${let
-        dev = pkgs.mkShell {};
-        shell = "
-    # export HOME=/nope
-    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"lunaperche"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}\" &> /dev/null
-  ";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"; "morning" = "${let
-        dev = pkgs.mkShell {};
-        shell = "
-    # export HOME=/nope
-    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"morning"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}\" &> /dev/null
-  ";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"; "murphy" = "${let
-        dev = pkgs.mkShell {};
-        shell = "
-    # export HOME=/nope
-    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"murphy"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}\" &> /dev/null
-  ";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"; "pablo" = "${let
-        dev = pkgs.mkShell {};
-        shell = "
-    # export HOME=/nope
-    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"pablo"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}\" &> /dev/null
-  ";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"; "peachpuff" = "${let
-        dev = pkgs.mkShell {};
-        shell = "
-    # export HOME=/nope
-    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"peachpuff"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}\" &> /dev/null
-  ";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"; "quiet" = "${let
-        dev = pkgs.mkShell {};
-        shell = "
-    # export HOME=/nope
-    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"quiet"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}\" &> /dev/null
-  ";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"; "ron" = "${let
-        dev = pkgs.mkShell {};
-        shell = "
-    # export HOME=/nope
-    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"ron"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}\" &> /dev/null
-  ";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"; "shine" = "${let
-        dev = pkgs.mkShell {};
-        shell = "
-    # export HOME=/nope
-    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"shine"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}\" &> /dev/null
-  ";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"; "slate" = "${let
-        dev = pkgs.mkShell {};
-        shell = "
-    # export HOME=/nope
-    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"slate"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}\" &> /dev/null
-  ";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"; "torte" = "${let
-        dev = pkgs.mkShell {};
-        shell = "
-    # export HOME=/nope
-    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"torte"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}\" &> /dev/null
-  ";
-        buildPath = pkgs.runCommand "build-inputs-path" {
-          inherit (dev) buildInputs nativeBuildInputs;
-        } "echo $PATH > $out";
-      in
-      pkgs.writeScript "shell-env"  ''
-        #!${pkgs.bash}/bin/bash
-        export PATH=$(cat ${buildPath}):$PATH
-        ${dev.shellHook}
-        ${shell} "$@"
-      ''}"; "zellner" = "${let
-        dev = pkgs.mkShell {};
-        shell = "
-    # export HOME=/nope
-    exec ${pkgs.xfce.xfce4-terminal}/bin/xfce4-terminal --disable-server --command \"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextFile {
-        name = "vimrc";
-        text = "colorscheme ${"zellner"}";
-      }} ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
-  if (x === 0) {
-    return 1;
-  } else if (x < 0) {
-    throw new Error(\"fac called with a negative number\");
-  } else {
-    return x * fac(x - 1);
-  }
-}
-
-console.log(fac(6));"}";
-  }}\" &> /dev/null
   ";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;

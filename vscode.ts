@@ -2,6 +2,8 @@ import { writeTextFile } from "https://garn.io/ts/v0.0.18/internal/utils.ts";
 import * as garn from "https://garn.io/ts/v0.0.18/mod.ts";
 import { nix } from "https://garn.io/ts/v0.0.18/mod.ts";
 import { NixExpression } from "https://garn.io/ts/v0.0.18/nix.ts";
+import { knockOut } from "./knockout.ts";
+import { exampleFile } from "./exampleFile.ts";
 
 const vscodium: nix.NixExpression = nix.nixRaw`
   (pkgs.vscode-with-extensions.override
@@ -30,7 +32,7 @@ const tempHomeDir = (settings: Record<string, unknown>): garn.Package => {
   `;
 };
 
-export const openVsCodium = (
+const openVsCodium = (
   args: {
     settings?: Record<string, unknown>;
     file?: NixExpression;
@@ -58,3 +60,32 @@ export const openVsCodium = (
     ${vscodium}/bin/codium --new-window --disable-workspace-trust ${file} --wait
   `.setDescription("open vscodium");
 };
+
+export const vscodiumColorschemes = [
+  "Abyss",
+  "Default Dark+",
+  "Default High Contrast",
+  "Default High Contrast Light",
+  "Default Light+",
+  "Default Light Modern",
+  "Kimbie Dark",
+  "Monokai",
+  "Monokai Dimmed",
+  "Quiet Light",
+  "Red",
+  "Solarized Dark",
+  "Solarized Light",
+  "Tomorrow Night Blue",
+  "Visual Studio Dark",
+  "Visual Studio Light",
+];
+
+export const vscodiumWithColorscheme = (colorscheme: string): garn.Executable =>
+  openVsCodium({
+    file: nix.nixStrLit`${exampleFile}`,
+    settings: {
+      "update.mode": "none",
+      "window.menuBarVisibility": "hidden",
+      "workbench.colorTheme": colorscheme,
+    },
+  });
