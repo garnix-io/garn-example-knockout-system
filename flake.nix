@@ -53,20 +53,7 @@
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme murphy' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme murphy"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -76,8 +63,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -95,20 +81,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme murphy' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme murphy"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -118,8 +91,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -143,20 +115,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme blue' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme blue"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -166,8 +125,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -185,20 +143,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme blue' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme blue"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -208,8 +153,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -227,20 +171,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme darkblue' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme darkblue"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -250,8 +181,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -269,20 +199,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme darkblue' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme darkblue"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -292,8 +209,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -311,20 +227,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme default' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme default"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -334,8 +237,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -353,20 +255,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme default' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme default"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -376,8 +265,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -395,20 +283,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme delek' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme delek"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -418,8 +293,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -437,20 +311,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme delek' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme delek"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -460,8 +321,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -479,20 +339,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme desert' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme desert"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -502,8 +349,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -521,20 +367,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme desert' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme desert"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -544,8 +377,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -563,20 +395,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme elflord' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme elflord"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -586,8 +405,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -605,20 +423,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme elflord' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme elflord"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -628,8 +433,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -647,20 +451,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme evening' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme evening"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -670,8 +461,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -689,20 +479,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme evening' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme evening"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -712,8 +489,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -731,20 +507,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme habamax' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme habamax"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -754,8 +517,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -773,20 +535,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme habamax' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme habamax"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -796,8 +545,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -815,20 +563,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme industry' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme industry"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -838,8 +573,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -857,20 +591,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme industry' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme industry"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -880,8 +601,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -899,20 +619,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme koehler' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme koehler"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -922,8 +629,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -941,20 +647,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme koehler' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme koehler"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -964,8 +657,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -983,20 +675,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme lunaperche' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme lunaperche"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -1006,8 +685,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1025,20 +703,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme lunaperche' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme lunaperche"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -1048,8 +713,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1067,20 +731,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme morning' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme morning"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -1090,8 +741,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1109,20 +759,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme morning' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme morning"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -1132,8 +769,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1151,20 +787,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme murphy' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme murphy"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -1174,8 +797,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1193,20 +815,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme murphy' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme murphy"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -1216,8 +825,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1235,20 +843,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme pablo' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme pablo"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -1258,8 +853,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1277,20 +871,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme pablo' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme pablo"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -1300,8 +881,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1319,20 +899,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme peachpuff' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme peachpuff"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -1342,8 +909,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1361,20 +927,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme peachpuff' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme peachpuff"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -1384,8 +937,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1403,20 +955,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme quiet' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme quiet"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -1426,8 +965,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1445,20 +983,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme quiet' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme quiet"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -1468,8 +993,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1487,20 +1011,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme ron' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme ron"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -1510,8 +1021,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1529,20 +1039,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme ron' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme ron"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -1552,8 +1049,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1571,20 +1067,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme shine' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme shine"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -1594,8 +1077,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1613,20 +1095,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme shine' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme shine"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -1636,8 +1105,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1655,20 +1123,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme slate' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme slate"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -1678,8 +1133,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1697,20 +1151,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme slate' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme slate"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -1720,8 +1161,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1739,20 +1179,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme torte' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme torte"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -1762,8 +1189,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1781,20 +1207,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme torte' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme torte"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -1804,8 +1217,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1823,20 +1235,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme zellner' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme zellner"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -1846,8 +1245,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1865,20 +1263,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme zellner' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme zellner"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -1888,8 +1273,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1930,20 +1314,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme blue' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme blue"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -1953,8 +1324,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -1972,20 +1342,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme blue' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme blue"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -1995,8 +1352,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -2014,20 +1370,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme darkblue' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme darkblue"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -2037,8 +1380,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -2056,20 +1398,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme darkblue' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme darkblue"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -2079,8 +1408,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -2098,20 +1426,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme default' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme default"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -2121,8 +1436,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -2140,20 +1454,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme default' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme default"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -2163,8 +1464,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -2182,20 +1482,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme delek' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme delek"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -2205,8 +1492,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -2224,20 +1510,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme delek' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme delek"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -2247,8 +1520,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -2266,20 +1538,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme desert' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme desert"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -2289,8 +1548,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -2308,20 +1566,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme desert' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme desert"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -2331,8 +1576,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -2350,20 +1594,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme elflord' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme elflord"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -2373,8 +1604,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -2392,20 +1622,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme elflord' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme elflord"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -2415,8 +1632,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -2434,20 +1650,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme evening' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme evening"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -2457,8 +1660,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -2476,20 +1678,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme evening' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme evening"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -2499,8 +1688,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -2518,20 +1706,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme habamax' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme habamax"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -2541,8 +1716,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -2560,20 +1734,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme habamax' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme habamax"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -2583,8 +1744,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -2602,20 +1762,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme industry' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme industry"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -2625,8 +1772,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -2644,20 +1790,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme industry' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme industry"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -2667,8 +1800,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -2686,20 +1818,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme koehler' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme koehler"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -2709,8 +1828,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -2728,20 +1846,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme koehler' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme koehler"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -2751,8 +1856,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -2770,20 +1874,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme lunaperche' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme lunaperche"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -2793,8 +1884,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -2812,20 +1902,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme lunaperche' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme lunaperche"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -2835,8 +1912,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -2854,20 +1930,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme morning' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme morning"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -2877,8 +1940,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -2896,20 +1958,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme morning' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme morning"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -2919,8 +1968,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -2938,20 +1986,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme murphy' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme murphy"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -2961,8 +1996,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -2980,20 +2014,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme murphy' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme murphy"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -3003,8 +2024,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -3022,20 +2042,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme pablo' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme pablo"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -3045,8 +2052,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -3064,20 +2070,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme pablo' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme pablo"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -3087,8 +2080,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -3106,20 +2098,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme peachpuff' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme peachpuff"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -3129,8 +2108,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -3148,20 +2126,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme peachpuff' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme peachpuff"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -3171,8 +2136,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -3190,20 +2154,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme quiet' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme quiet"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -3213,8 +2164,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -3232,20 +2182,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme quiet' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme quiet"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -3255,8 +2192,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -3274,20 +2210,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme ron' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme ron"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -3297,8 +2220,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -3316,20 +2238,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme ron' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme ron"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -3339,8 +2248,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -3358,20 +2266,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme shine' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme shine"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -3381,8 +2276,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -3400,20 +2294,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme shine' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme shine"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -3423,8 +2304,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -3442,20 +2322,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme slate' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme slate"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -3465,8 +2332,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -3484,20 +2350,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme slate' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme slate"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -3507,8 +2360,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -3526,20 +2378,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme torte' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme torte"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -3549,8 +2388,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -3568,20 +2406,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme torte' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme torte"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -3591,8 +2416,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -3610,20 +2434,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.lxterminal)];
         });
-        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme zellner' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec lxterminal --no-remote --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme zellner"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -3633,8 +2444,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";
@@ -3652,20 +2462,7 @@ console.log(fac(6));"}";
             ++
             [(pkgs.alacritty)];
         });
-        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${let dev = pkgs.mkShell {}; in
-    pkgs.runCommand "garn-pkg" {
-      buildInputs = dev.buildInputs ++ dev.nativeBuildInputs;
-    } "${"mkdir -p \$out"}
-${"
-      ${""}
-      ${""}
-    "}
-${"
-        echo 'colorscheme zellner' > \$out/.vimrc
-      "}
-"}/.vimrc ${pkgs.writeTextFile {
-    name = "${"example.ts"}";
-    text = "${"function fac(x: number): number {
+        shell = "exec alacritty --command ${"${pkgs.neovim}/bin/nvim -u ${pkgs.writeTextDir ".vimrc" "colorscheme zellner"}/.vimrc ${pkgs.writeTextDir "example.ts" "function fac(x: number): number {
   if (x === 0) {
     return 1;
   } else if (x < 0) {
@@ -3675,8 +2472,7 @@ ${"
   }
 }
 
-console.log(fac(6));"}";
-  }}"}";
+console.log(fac(6));"}/example.ts"}";
         buildPath = pkgs.runCommand "build-inputs-path" {
           inherit (dev) buildInputs nativeBuildInputs;
         } "echo $PATH > $out";

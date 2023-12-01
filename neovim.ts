@@ -2,28 +2,24 @@ import * as pkgs from "https://garn.io/ts/v0.0.18/nixpkgs.ts";
 import * as garn from "https://garn.io/ts/v0.0.18/mod.ts";
 import * as nix from "https://garn.io/ts/v0.0.18/nix.ts";
 import { mkExecutable } from "https://garn.io/ts/v0.0.18/executable.ts";
-import { ifSystemIsElse } from "./utils.ts";
-import { writeTextFile } from "https://garn.io/ts/v0.0.18/internal/utils.ts";
+import { ifSystemIsElse, writeTextDir } from "./utils.ts";
 import outdent from "https://deno.land/x/outdent@v0.8.0/mod.ts";
 
-const exampleFile: garn.Package = garn.mkPackage(
-  writeTextFile(
-    "example.ts",
-    outdent`
-        function fac(x: number): number {
-          if (x === 0) {
-            return 1;
-          } else if (x < 0) {
-            throw new Error("fac called with a negative number");
-          } else {
-            return x * fac(x - 1);
-          }
-        }
+const exampleFile: garn.Package = writeTextDir(
+  "example.ts",
+  outdent`
+    function fac(x: number): number {
+      if (x === 0) {
+        return 1;
+      } else if (x < 0) {
+        throw new Error("fac called with a negative number");
+      } else {
+        return x * fac(x - 1);
+      }
+    }
 
-        console.log(fac(6));
-      `,
-  ),
-  "example code file",
+    console.log(fac(6));
+  `,
 );
 
 const terminalEmulator = (command: nix.NixExpression): garn.Executable => {
@@ -42,11 +38,9 @@ const terminalEmulator = (command: nix.NixExpression): garn.Executable => {
 };
 
 export const neovimWithColorscheme = (colorscheme: string): garn.Executable => {
-  const vimrc = garn.build(`
-    echo 'colorscheme ${colorscheme}' > $out/.vimrc
-  `);
+  const vimrc = writeTextDir(".vimrc", `colorscheme ${colorscheme}`);
   return terminalEmulator(
-    nix.nixStrLit`${pkgs.neovim}/bin/nvim -u ${vimrc}/.vimrc ${exampleFile}`,
+    nix.nixStrLit`${pkgs.neovim}/bin/nvim -u ${vimrc}/.vimrc ${exampleFile}/example.ts`,
   );
 };
 

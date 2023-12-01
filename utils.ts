@@ -1,3 +1,4 @@
+import * as garn from "https://garn.io/ts/v0.0.18/mod.ts";
 import {
   NixExpression,
   nixList,
@@ -15,3 +16,9 @@ export const ifSystemIsElse = (
       then ${_then}
       else ${_else}
   `;
+
+export const writeTextDir = (path: string, content: string): garn.Package =>
+  garn.mkPackage(
+    nixRaw`pkgs.writeTextDir ${nixStrLit(path)} ${nixStrLit(content)}`,
+    path,
+  );
